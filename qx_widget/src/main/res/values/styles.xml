@@ -1,0 +1,75 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="widget_app_theme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/widget_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/widget_colorPrimaryDark</item>
+        <item name="colorAccent">@color/widget_colorAccent</item>
+    </style>
+
+    <style name="widget_dividingline_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">#f0f0f0</item>
+    </style>
+
+    <!--弹窗动画-->
+    <style name="widget_fold_pop_animation_from_bottom">
+        <item name="android:windowEnterAnimation">@anim/widget_anim_pop_fold_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/widget_anim_pop_fold_out_from_top</item>
+    </style>
+
+    <style name="widget_pop_animation_from_leftbottom">
+        <item name="android:windowEnterAnimation">@anim/widget_anim_pop_in_from_leftbottom</item>
+        <item name="android:windowExitAnimation">@anim/widget_anim_pop_out_from_leftbottom</item>
+    </style>
+
+    <style name="widget_fold_pop_animation_from_top">
+        <item name="android:windowEnterAnimation">@anim/widget_anim_pop_fold_in_from_top</item>
+        <item name="android:windowExitAnimation">@anim/widget_anim_pop_fold_out_from_bottom</item>
+    </style>
+
+    <style name="widget_translate_pop_animation_from_top">
+        <item name="android:windowEnterAnimation">@anim/widget_anim_pop_translate_in_from_top</item>
+        <item name="android:windowExitAnimation">@anim/widget_anim_pop_translate_out_from_bottom</item>
+    </style>
+
+    <style name="widget_translate_pop_animation_from_bottom">
+        <item name="android:windowEnterAnimation">@anim/widget_anim_pop_translate_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/widget_anim_pop_translate_out_from_top</item>
+    </style>
+
+    <style name="widget_translate_pop_animation_from_bottom_out_bottom">
+        <!-- 指定显示的动画xml -->
+        <item name="android:windowEnterAnimation">@anim/widget_anim_show_from_bottom</item>
+        <!-- 指定消失的动画xml -->
+        <item name="android:windowExitAnimation">@anim/widget_anim_hide_to_bottom</item>
+    </style>
+
+    <!-- 自定义评价星级属性 -->
+    <declare-styleable name="widget_star">
+        <!--数量-->
+        <attr format="integer" name="widget_stars_num"></attr>
+        <!--宽度-->
+        <attr format="dimension" name="widget_star_width"></attr>
+        <!--高度-->
+        <attr format="dimension" name="widget_star_height"></attr>
+        <!--间距-->
+        <attr format="dimension" name="widget_star_distance"></attr>
+        <!--未选中-->
+        <attr format="reference" name="widget_star_background"></attr>
+        <!--选中-->
+        <attr format="reference" name="widget_star_drawbackground"></attr>
+        <!--控件是否可以点击-->
+        <attr format="boolean" name="widget_star_clickable"></attr>
+    </declare-styleable>
+
+    <style name="widget_star_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="widget_star_background">@mipmap/widget_ic_star_defocus</item>
+        <item name="widget_star_drawbackground">@mipmap/widget_ic_star_focusing</item>
+    </style>
+
+</resources>

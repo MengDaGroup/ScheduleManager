@@ -1,0 +1,16 @@
+apply plugin: 'com.android.library'
+apply from: "${gradles.basebuild}"
+def library = rootProject.ext.dependenciesMaven
+def supportLibrary = rootProject.ext.supportsMaven
+android{
+    resourcePrefix "widget_"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api supportLibrary.appcompat
+    api supportLibrary.constrainlayout
+    //fastjson
+    implementation library.fastjson
+    implementation project(path: ':qx_utils')
+}

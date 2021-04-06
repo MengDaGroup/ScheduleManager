@@ -1,0 +1,19 @@
+apply plugin: 'com.jakewharton.butterknife'
+android {
+
+    defaultConfig {
+
+        //路由配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
+            }
+        }
+    }
+
+}
+dependencies {
+    annotationProcessor "${dependenciesMaven.routerApt}"
+    annotationProcessor "${dependenciesMaven.butterknifeApt}"
+    annotationProcessor "${dependenciesMaven.glideapt}"
+}

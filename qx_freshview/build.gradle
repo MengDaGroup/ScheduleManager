@@ -1,0 +1,14 @@
+apply plugin: 'com.android.library'
+
+apply from: "${gradles.basebuild}"
+def library = rootProject.ext.dependenciesMaven
+def supportLibrary = rootProject.ext.supportsMaven
+android {
+//    resourcePrefix "rv_"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api library.recyclerview
+}
+

@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+apply from: "${gradles.basebuild}"
+def library = rootProject.ext.dependenciesMaven
+def supportLibrary = rootProject.ext.supportsMaven
+android {
+    resourcePrefix "base_"
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //ok3
+    api library.ok3_okhttp
+    api library.ok3_logging
+    //retrofit
+    api library.retrofit2_retrofit
+    api library.retrofit2_converter_gson
+    api library.retrofit2_adapter_rxjava
+    //rxjava
+    api library.rxjava2_rxjava
+    //rxandroid
+    api library.rcjava2_rxandroid
+    //disk
+    api library.disklrucache
+    //阿里router
+    api library.router
+    //timber
+    api library.timber
+    //黄油刀
+    api library.butterknife
+    //eventbus
+    api library.eventbus
+    api project(path: ':qx_freshview')
+    api project(path: ':imagepicker')
+    api library.glide
+    api library.bomb
+    //utils
+    api project(path: ':qx_utils')
+    //widget
+    api project(path: ':qx_widget')
+}

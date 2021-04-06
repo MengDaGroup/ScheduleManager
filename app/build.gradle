@@ -1,0 +1,16 @@
+apply plugin: 'com.android.application'
+apply from: "${gradles.basebuild}"
+apply from: "${gradles.aptbuild}"
+def library = rootProject.ext.dependenciesMaven
+def supportLibrary = rootProject.ext.supportsMaven
+
+android {
+    defaultConfig {
+        applicationId "com.dayi.dayiintegration"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':base')
+}

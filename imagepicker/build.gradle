@@ -1,0 +1,13 @@
+apply plugin: 'com.android.library'
+apply from: "${gradles.basebuild}"
+def library = rootProject.ext.dependenciesMaven
+def supportLibrary = rootProject.ext.supportsMaven
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api library.recyclerview
+    api supportLibrary.appcompat
+    api library.photoview
+}
+
+//apply from: '../bintray.gradle'

@@ -1,0 +1,10 @@
+apply plugin: 'com.android.library'
+apply from: "${gradles.basebuild}"
+def supportLibrary = rootProject.ext.supportsMaven
+android {
+
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation supportLibrary.appcompat
+}

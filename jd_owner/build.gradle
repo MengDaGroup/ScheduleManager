@@ -1,0 +1,42 @@
+if (rootProject.ext.isJdOwnerApplication){
+    apply plugin: 'com.android.application'
+}else {
+    apply plugin: 'com.android.library'
+}
+
+apply from: "${gradles.basebuild}"
+apply from: "${gradles.aptbuild}"
+android {
+    resourcePrefix "jdowner_"
+    defaultConfig {
+
+        if (rootProject.ext.isJdOwnerApplication){
+            //组件模式下设置applicationId
+            applicationId "com.dayi35.jd_owner"
+        }
+
+    }
+
+    //资源路径配置
+    sourceSets {
+        main{
+            if (rootProject.ext.isJdOwnerApplication){
+                //开发模式下加载module下的AndroidManifest
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            }else {
+                //集成模式下加载main下的AndroidManifest
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':base')
+    //用户组件
+    if (!rootProject.ext.isUserApplication){
+        implementation project(path: ':jd_user')
+    }
+}
