@@ -4,7 +4,7 @@ import com.dayi.jd_user.contract.UserContract;
 import com.dayi35.qx_base.base.callback.OnJsonCallback;
 import com.dayi35.qx_base.base.mvp.BasePresentImpl;
 import com.dayi35.qx_base.entity.UserEntity;
-import com.dayi35.qx_base.entity.jd_user_common;
+import com.dayi35.qx_base.entity.UserInfoEntity;
 import com.dayi35.qx_base.utils.GsonHelper;
 import com.dayi35.qx_base.utils.UserHelper;
 import com.dayi35.qx_utils.common.ToastUtils;
@@ -66,11 +66,11 @@ public class LoginPresenter extends BasePresentImpl<UserContract.LoginView> impl
      * @param callback
      */
     public void getUserInfo(String userId, OnJsonCallback callback){
-        BmobQuery<jd_user_common> query = new BmobQuery<>();
+        BmobQuery<UserInfoEntity> query = new BmobQuery<>();
         query.addWhereEqualTo("user_id", userId);
-        query.findObjects(new FindListener<jd_user_common>() {
+        query.findObjects(new FindListener<UserInfoEntity>() {
             @Override
-            public void done(List<jd_user_common> list, BmobException e) {
+            public void done(List<UserInfoEntity> list, BmobException e) {
                 if (null == e && list.size() > 0){
                     UserHelper.get().saveUser(list.get(0));
                     if (null != mView){

@@ -10,7 +10,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api supportLibrary.appcompat
     api supportLibrary.constrainlayout
+    api supportLibrary.annotations
     //fastjson
     implementation library.fastjson
+    //pnikosis_progress
+    implementation library.pnikosis_progress
+
     implementation project(path: ':qx_utils')
 }

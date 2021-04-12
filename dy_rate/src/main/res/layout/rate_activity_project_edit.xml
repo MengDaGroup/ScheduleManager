@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/widget_color_ffffff">
+
+    <com.dayi35.qx_widget.titlebar.TitleBar
+        android:id="@+id/rate_tb_project_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:widget_centertitle="编辑功能点" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_dp_20"
+        android:background="@color/widget_color_f5f5f5"
+        android:layout_below="@id/rate_tb_project_edit"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/rate_tb_project_edit"
+        android:layout_marginTop="@dimen/widget_dp_20"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/widget_dp_68">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_dp_60"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="功能名称："
+                    android:layout_marginLeft="@dimen/widget_dp_15"
+                    android:textSize="@dimen/widget_sp_14"
+                    android:textColor="@color/widget_color_2e2e2e"/>
+
+                <EditText
+                    android:id="@+id/rate_et_name"
+                    style="@style/rate_et2e2e2e_h999999_style"
+                    android:layout_marginRight="@dimen/widget_dp_15"
+                    android:textSize="@dimen/widget_sp_14"
+                    android:hint="请输入项目名称"
+                    android:maxLines="1"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_dp_1"
+                android:background="@color/widget_color_f5f5f5"
+                android:layout_marginLeft="@dimen/widget_dp_15"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_dp_60"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="功能归属："
+                    android:layout_marginLeft="@dimen/widget_dp_15"
+                    android:textSize="@dimen/widget_sp_14"
+                    android:textColor="@color/widget_color_2e2e2e"/>
+
+                <EditText
+                    android:id="@+id/rate_et_belong"
+                    style="@style/rate_et2e2e2e_h999999_style"
+                    android:layout_marginRight="@dimen/widget_dp_15"
+                    android:textSize="@dimen/widget_sp_14"
+                    android:hint="请输入归属者昵称"
+                    android:maxLines="1"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_dp_1"
+                android:background="@color/widget_color_f5f5f5"
+                android:layout_marginLeft="@dimen/widget_dp_15"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_dp_60"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开始时间："
+                    android:layout_marginLeft="@dimen/widget_dp_15"
+                    android:textSize="@dimen/widget_sp_14"
+                    android:textColor="@color/widget_color_2e2e2e"/>
+
+                <EditText
+                    android:id="@+id/rate_et_starttime"
+                    style="@style/rate_et2e2e2e_h999999_style"
+                    android:layout_marginRight="@dimen/widget_dp_15"
+                    android:textSize="@dimen/widget_sp_14"
+                    android:hint="请输入项目开始时间 xxxx-xx-xx格式"
+                    android:inputType="number"
+                    android:digits="0123456789-"
+                    android:maxLines="1"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_dp_1"
+                android:background="@color/widget_color_f5f5f5"
+                android:layout_marginLeft="@dimen/widget_dp_15"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_dp_60"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="结束时间："
+                    android:layout_marginLeft="@dimen/widget_dp_15"
+                    android:textSize="@dimen/widget_sp_14"
+                    android:textColor="@color/widget_color_2e2e2e"/>
+
+                <EditText
+                    android:id="@+id/rate_et_endtime"
+                    style="@style/rate_et2e2e2e_h999999_style"
+                    android:layout_marginRight="@dimen/widget_dp_15"
+                    android:textSize="@dimen/widget_sp_14"
+                    android:hint="请输入项目结束时间 xxxx-xx-xx格式"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:digits="0123456789-"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_dp_1"
+                android:background="@color/widget_color_f5f5f5"
+                android:layout_marginLeft="@dimen/widget_dp_15"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_dp_60"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="当前进度："
+                    android:layout_marginLeft="@dimen/widget_dp_15"
+                    android:textSize="@dimen/widget_sp_14"
+                    android:textColor="@color/widget_color_2e2e2e"/>
+
+                <EditText
+                    android:id="@+id/rate_et_progress"
+                    style="@style/rate_et2e2e2e_h999999_style"
+                    android:layout_marginRight="@dimen/widget_dp_15"
+                    android:textSize="@dimen/widget_sp_14"
+                    android:hint="请输入项目进度(不大于100)"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_dp_20"
+                android:background="@color/widget_color_f5f5f5"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/widget_dp_15"
+                android:textColor="@color/widget_color_2e2e2e"
+                android:layout_marginTop="@dimen/widget_dp_12"
+                android:text="备注"
+                android:textSize="@dimen/widget_sp_14"/>
+
+            <TextView
+                android:id="@+id/rate_tv_noted"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/widget_dp_10"
+                android:layout_marginLeft="@dimen/widget_dp_15"
+                android:layout_marginRight="@dimen/widget_dp_15"/>
+
+            <EditText
+                android:id="@+id/rate_et_note"
+                style="@style/rate_et2e2e2e_h999999_style"
+                android:background="@drawable/rate_shape_solid_f5f5f5_r4"
+                android:layout_marginRight="@dimen/widget_dp_15"
+                android:layout_marginLeft="@dimen/widget_dp_15"
+                android:minHeight="@dimen/widget_dp_40"
+                android:hint="更新说明"
+                android:paddingLeft="@dimen/widget_dp_10"
+                android:paddingRight="@dimen/widget_dp_10"
+                android:textSize="@dimen/widget_sp_14"/>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/rate_btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_dp_40"
+        android:layout_marginLeft="@dimen/widget_dp_15"
+        android:layout_marginRight="@dimen/widget_dp_15"
+        android:layout_marginTop="@dimen/widget_dp_50"
+        android:text="保存"
+        android:textSize="@dimen/widget_sp_14"
+        android:textColor="@color/widget_color_ffffff"
+        android:background="@drawable/widget_sele_redbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/widget_dp_20"/>
+
+</RelativeLayout>

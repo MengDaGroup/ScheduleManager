@@ -9,7 +9,7 @@ import com.dayi.jd_user.contract.UserContract;
 import com.dayi.jd_user.presenter.LoginPresenter;
 import com.dayi35.qx_base.base.state.BaseStateActivity;
 import com.dayi35.qx_base.entity.UserEntity;
-import com.dayi35.qx_base.entity.jd_user_common;
+import com.dayi35.qx_base.entity.UserInfoEntity;
 import com.dayi35.qx_utils.common.ToastUtils;
 import com.dayi35.qx_utils.convert.RCaster;
 import com.dayi35.qx_widget.titlebar.TitleBar;
@@ -94,7 +94,7 @@ public class UserLoginActivity extends BaseStateActivity<LoginPresenter> impleme
     }
 
     @Override
-    public void onGetUserInfo(jd_user_common entity) {
+    public void onGetUserInfo(UserInfoEntity entity) {
 
     }
 }

@@ -1,0 +1,21 @@
+if (rootProject.ext.isDyRateApplication){
+    apply plugin: 'com.android.application'
+}else {
+    apply plugin: 'com.android.library'
+}
+apply from: "${gradles.basebuild}"
+apply from: "${gradles.aptbuild}"
+android {
+    resourcePrefix "rate_"
+    defaultConfig {
+        if (rootProject.ext.isDyRateApplication){
+            //组件模式下设置applicationId
+            applicationId "com.dayi.dy_rate"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':base')
+}

@@ -3,6 +3,8 @@ ext {
     isUserApplication                       =           true       //九鼎车主组件
     isJdOwnerApplication                    =           true       //九鼎车主组件
 
+    isDyRateApplication                     =           true        //大易进度
+
     //Android 版本配置
     android = [
             compileSdkVersion : 29,
@@ -83,6 +85,10 @@ ext {
             glideapt                    : 'com.github.bumptech.glide:compiler:4.9.0',
             //alibaba vlayout
             vlayout                     : 'com.alibaba.android:vlayout:1.2.36@aar',
+            //progress
+            pnikosis_progress           : 'com.pnikosis:materialish-progress:1.0',
+
+
             //growingio
             growingio                   : 'com.growingio.android:vds-android-agent:autotrack-2.8.13',
             //bugly
@@ -99,6 +105,7 @@ ext {
             appcompat               :           "androidx.appcompat:appcompat:${version[ "appcompat_version"]}",
             constrainlayout         :           "androidx.constraintlayout:constraintlayout:${version["constrainlayout_version"]}",
             design                  :           "com.google.android.material:material:${version[ "deign_version"]}",
+            annotations             :           "androidx.annotation:annotation:1.0.0",
     ]
 
     //通用父配置

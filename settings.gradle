@@ -1,1 +1,1 @@
-include ':app', ':qx_widget', ':qx_version', ':qx_utils', ':qx_freshview', ':base', ':imagepicker', ':jd_owner', ':jd_user'
+include ':app', ':qx_widget', ':qx_version', ':qx_utils', ':qx_freshview', ':base', ':imagepicker', ':jd_owner', ':jd_user', ':dy_rate'

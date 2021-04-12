@@ -2,7 +2,7 @@ package com.dayi35.qx_base.utils;
 
 import android.text.TextUtils;
 
-import com.dayi35.qx_base.entity.jd_user_common;
+import com.dayi35.qx_base.entity.UserInfoEntity;
 import com.dayi35.qx_utils.androidcodeutils.SPUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,7 +19,7 @@ import com.google.gson.JsonSyntaxException;
 public class UserHelper {
     private static UserHelper instance;
     private final Gson mGson;
-    private jd_user_common mUserInfo;
+    private UserInfoEntity mUserInfo;
     private String mUserName;
     private String mPassWord;
     private static final String USER_INFO = "user_helper_user_info";
@@ -30,7 +30,7 @@ public class UserHelper {
         mGson = new GsonBuilder().serializeNulls().create();
         loadUserInfoFromSp();
         if (mUserInfo == null) {
-            mUserInfo = new jd_user_common();
+            mUserInfo = new UserInfoEntity();
         }
     }
 
@@ -67,9 +67,18 @@ public class UserHelper {
      * 获取用户ID
      * @return
      */
-    private String getUserId(){
+    public String getUserId(){
         checkEmptyAndLoad(mUserInfo);
         return mUserInfo.getUser_id();
+    }
+
+    /**
+     * 获取用户昵称
+     * @return
+     */
+    public String getUserNickName(){
+        checkEmptyAndLoad(mUserInfo);
+        return mUserInfo.getNickName();
     }
 
     /**
@@ -78,14 +87,14 @@ public class UserHelper {
     public void logOut(){
         saveUserName("");
         savePassWord("");
-        saveUser(new jd_user_common());
+        saveUser(new UserInfoEntity());
     }
 
     /**
      * 保存用户信息实体
      * @param entity
      */
-    public void saveUser(jd_user_common entity){
+    public void saveUser(UserInfoEntity entity){
         String json = mGson.toJson(entity);
         SPUtils.getInstance().put(USER_INFO, json);
     }
@@ -112,7 +121,7 @@ public class UserHelper {
     private void loadUserInfoFromSp() {
         String json = SPUtils.getInstance().getString(USER_INFO);
         try {
-            jd_user_common userInfo = mGson.fromJson(json, jd_user_common.class);
+            UserInfoEntity userInfo = mGson.fromJson(json, UserInfoEntity.class);
             if (userInfo != null) {
                 mUserInfo = userInfo;
             }

@@ -108,7 +108,14 @@ public class DateUtil {
      * 调此方法输入所要转换的时间输入例如（"2014-06-14  16:09:00"）返回时间戳
      */
     public static long dateToLong(String time) {
-        SimpleDateFormat sdr = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+        return dateToLong(time, "yyyy-MM-dd HH:mm:ss");
+    }
+
+    /**
+     * 调此方法输入所要转换的时间输入例如（"2014-06-14  16:09:00"）返回时间戳
+     */
+    public static long dateToLong(String time, String format) {
+        SimpleDateFormat sdr = new SimpleDateFormat(format, Locale.CHINA);
         Date date;
         long l = 0;
         try {

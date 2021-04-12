@@ -2,7 +2,7 @@ package com.dayi.jd_user.contract;
 
 import com.dayi35.qx_base.base.mvp.BaseView;
 import com.dayi35.qx_base.entity.UserEntity;
-import com.dayi35.qx_base.entity.jd_user_common;
+import com.dayi35.qx_base.entity.UserInfoEntity;
 
 /**
  * =========================================
@@ -31,7 +31,7 @@ public interface UserContract {
     }
 
     interface LoginView extends BaseView{
-        void onGetUserInfo(jd_user_common entity);
+        void onGetUserInfo(UserInfoEntity entity);
     }
 
 }
