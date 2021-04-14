@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/income_tv_userincome_popfilter_item"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/widget_dp_32"
+    android:textColor="@drawable/rate_sele_textcolor_2e2e2e_ff9912"
+    android:gravity="center"
+    android:textSize="@dimen/widget_sp_14"
+    android:background="@drawable/rate_sele_filterpop_userincome_item"
+    android:layout_marginRight="@dimen/widget_dp_12"
+    android:layout_marginTop="@dimen/widget_dp_10">
+
+</TextView>

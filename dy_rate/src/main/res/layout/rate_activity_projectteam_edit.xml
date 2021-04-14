@@ -38,17 +38,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="项目名称："
+                    android:text="归属项目："
                     android:layout_marginLeft="@dimen/widget_dp_15"
                     android:textSize="@dimen/widget_sp_14"
                     android:textColor="@color/widget_color_2e2e2e"/>
 
-                <EditText
-                    android:id="@+id/rate_et_name"
+                <TextView
+                    android:id="@+id/rate_tv_project"
                     style="@style/rate_et2e2e2e_h999999_style"
                     android:layout_marginRight="@dimen/widget_dp_15"
                     android:textSize="@dimen/widget_sp_14"
-                    android:hint="请输入项目名称"
+                    android:hint="点击选择项目"
                     android:maxLines="1"
                     />
 
@@ -69,7 +69,38 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="项目归属："
+                    android:text="组件名称："
+                    android:layout_marginLeft="@dimen/widget_dp_15"
+                    android:textSize="@dimen/widget_sp_14"
+                    android:textColor="@color/widget_color_2e2e2e"/>
+
+                <EditText
+                    android:id="@+id/rate_et_name"
+                    style="@style/rate_et2e2e2e_h999999_style"
+                    android:layout_marginRight="@dimen/widget_dp_15"
+                    android:textSize="@dimen/widget_sp_14"
+                    android:hint="请输入组件名称"
+                    android:maxLines="1"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_dp_1"
+                android:background="@color/widget_color_f5f5f5"
+                android:layout_marginLeft="@dimen/widget_dp_15"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/widget_dp_60"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="组件归属："
                     android:layout_marginLeft="@dimen/widget_dp_15"
                     android:textSize="@dimen/widget_sp_14"
                     android:textColor="@color/widget_color_2e2e2e"/>

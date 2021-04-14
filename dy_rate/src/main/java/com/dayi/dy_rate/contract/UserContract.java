@@ -2,6 +2,7 @@ package com.dayi.dy_rate.contract;
 
 import com.dayi.dy_rate.entity.DyUser;
 import com.dayi.dy_rate.entity.ProjectEntity;
+import com.dayi.dy_rate.entity.ProjectRateEntity;
 import com.dayi.dy_rate.entity.ProjectTeamEntity;
 import com.dayi.dy_rate.entity.UserEntity;
 import com.dayi35.qx_base.base.mvp.BaseView;
@@ -103,11 +104,17 @@ public interface UserContract {
             void update(ProjectTeamEntity entity);
 
             /**
-             * 查
-             * @param entity        查
+             * 查询
+             * @param objectId      项目归属ID
+             * @param os            端1.Android  2.IOS
+             * @param state         状态1.进行中 2.已结束   3.已逾期
              */
-            void search(ProjectTeamEntity entity);
+            void search(String objectId, int os, int state);
 
+            /**
+             * 查询项目实体列表
+             */
+            void searchRate();
 
         }
 
@@ -118,6 +125,12 @@ public interface UserContract {
              * @param entity
              */
             void onDoSuccess(int type, List<ProjectTeamEntity> entity);
+
+            /**
+             *
+             * @param entities  获取到项目工程列表
+             */
+            void onGetRateSuccess(List<ProjectRateEntity> entities);
 
             /**
              * 操作失败

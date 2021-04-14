@@ -24,7 +24,25 @@ public class ProjectTeamEntity extends BmobObject {
     private String projectProgress;             //项目进度
     private String projectBelong;               //项目归属
     private String projectName;                 //项目名
+    private String projectRateId;               //项目归属ID
+    private String projectRateName;             //项目归属名
     private int projectState;                   //项目状态 1.进行中 2.已结束
+
+    public String getProjectRateId() {
+        return projectRateId;
+    }
+
+    public void setProjectRateId(String projectRateId) {
+        this.projectRateId = projectRateId;
+    }
+
+    public String getProjectRateName() {
+        return projectRateName;
+    }
+
+    public void setProjectRateName(String projectRateName) {
+        this.projectRateName = projectRateName;
+    }
 
     public List<String> getProjectNote() {
         return projectNote;

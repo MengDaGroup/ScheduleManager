@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/common_rv_bottomcommon_column"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:background="@drawable/base_shape_solid_ffffff_top_8"/>
+
+    <Button
+        android:id="@+id/common_btn_bottomcommon_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_dp_50"
+        app:layout_constraintTop_toBottomOf="@id/common_rv_bottomcommon_column"
+        android:layout_marginTop="@dimen/widget_dp_10"
+        android:textColor="@color/widget_color_2e2e2e"
+        android:text="取消"
+        android:textStyle="bold"
+        android:textSize="@dimen/widget_sp_14"
+        android:background="@drawable/base_shape_solid_ffffff_top_8"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

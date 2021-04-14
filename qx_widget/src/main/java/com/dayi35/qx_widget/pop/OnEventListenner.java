@@ -29,24 +29,4 @@ public class OnEventListenner {
     public interface OnVListClickListenner{
         void onClick(String value, int pos);
     }
-
-    /**
-     * 商品管理中的点击回调
-     */
-    public interface OnShopProductSelectCallback{
-        /**
-         *
-         * @param type  类型（String）
-         */
-        void onTypeClicked(String type);
-    }
-
-    /**
-     * 分享弹窗里的点击事件
-     */
-    public interface OnShareCommonWayCallback{
-        void wayCopy();
-        void wayWechat();
-        void wayPoster();
-    }
 }

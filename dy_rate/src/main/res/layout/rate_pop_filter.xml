@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rate_shape_bcorners_8_solid_ffffff">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_dp_1"
+            android:background="@color/widget_color_f5f5f5"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rate_rv_pop_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:paddingLeft="@dimen/widget_dp_15"
+            android:paddingRight="@dimen/widget_dp_3"
+            android:layout_marginLeft="@dimen/widget_dp_8"
+            android:layout_marginRight="@dimen/widget_dp_8"
+            android:paddingTop="@dimen/widget_dp_5"
+            android:paddingBottom="@dimen/widget_dp_15"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

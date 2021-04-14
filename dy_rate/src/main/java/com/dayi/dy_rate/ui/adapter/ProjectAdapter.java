@@ -76,7 +76,7 @@ public class ProjectAdapter extends RecyclerArrayAdapter<ProjectEntity> {
                 mDpProgress.setTextColor(getContext().getResources().getColor(R.color.widget_color_a5dc86));
             }else {
                 //标签
-                mLtvState.setLabelText("已延期");
+                mLtvState.setLabelText("已逾期");
                 mLtvState.setLabelBackgroundColor(getContext().getResources().getColor(R.color.widget_color_f8bb86));
                 //进度样式
                 mDpProgress.setFinishedStrokeColor(getContext().getResources().getColor(R.color.widget_color_f8bb86));

@@ -1,7 +1,10 @@
 package com.dayi.dy_rate.presenter;
 
+import android.text.TextUtils;
+
 import com.dayi.dy_rate.contract.UserContract;
 import com.dayi.dy_rate.entity.ProjectEntity;
+import com.dayi.dy_rate.entity.ProjectRateEntity;
 import com.dayi.dy_rate.entity.ProjectTeamEntity;
 import com.dayi35.qx_base.base.mvp.BasePresentImpl;
 import com.dayi35.qx_utils.common.ToastUtils;
@@ -76,26 +79,56 @@ public class ProjectTeamPresenter extends BasePresentImpl<UserContract.ProjectTe
     }
 
     /**
-     *
-     * @param entity        查
+     * 查询
+     * @param objectId      项目归属ID
+     * @param os            端1.Android  2.IOS
+     * @param state         状态1.进行中 2.已结束   3.已逾期
      */
     @Override
-    public void search(ProjectTeamEntity entity) {
-        if (null != entity){
-            mView.showLoading();
-            BmobQuery<ProjectTeamEntity> query = new BmobQuery<ProjectTeamEntity>();
-            query.findObjects(new FindListener<ProjectTeamEntity>() {
-                @Override
-                public void done(List<ProjectTeamEntity> list, BmobException e) {
-                    mView.hideLoading();
-                    if (null == e){
-                        mView.onDoSuccess(3, list);
-                    }else {
-                        ToastUtils.showShort("查询失败");
-                        mView.onFailed(3, e.getMessage());
-                    }
-                }
-            });
+    public void search(String objectId, int os, int state) {
+        mView.showLoading();
+        BmobQuery<ProjectTeamEntity> query = new BmobQuery<ProjectTeamEntity>();
+        if (!TextUtils.isEmpty(objectId)) {
+            query.addWhereEqualTo("projectRateId", objectId);
         }
+        if (0 != os){
+            query.addWhereEqualTo("projectOS", os);
+        }
+        if (0 != state){
+            query.addWhereEqualTo("projectState", state);
+        }
+        query.findObjects(new FindListener<ProjectTeamEntity>() {
+            @Override
+            public void done(List<ProjectTeamEntity> list, BmobException e) {
+                mView.hideLoading();
+                if (null == e){
+                    mView.onDoSuccess(3, list);
+                }else {
+                    ToastUtils.showShort("查询失败");
+                    mView.onFailed(3, e.getMessage());
+                }
+            }
+        });
+    }
+
+    /**
+     * 查询项目实体列表
+     */
+    @Override
+    public void searchRate() {
+        mView.showLoading();
+        BmobQuery<ProjectRateEntity> query = new BmobQuery<ProjectRateEntity>();
+        query.findObjects(new FindListener<ProjectRateEntity>() {
+            @Override
+            public void done(List<ProjectRateEntity> list, BmobException e) {
+                mView.hideLoading();
+                if (null == e){
+                    mView.onGetRateSuccess(list);
+                }else {
+                    ToastUtils.showShort("查询失败");
+                    mView.onFailed(3, e.getMessage());
+                }
+            }
+        });
     }
 }

@@ -2,6 +2,7 @@ package com.dayi.dy_rate.ui.adapter;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ import com.dayi35.recycle.holder.BaseViewHolder;
  * =========================================
  */
 public class ProjectTeamAdapter extends RecyclerArrayAdapter<ProjectTeamEntity> {
+
     public ProjectTeamAdapter(Context context) {
         super(context);
     }
@@ -40,6 +42,7 @@ public class ProjectTeamAdapter extends RecyclerArrayAdapter<ProjectTeamEntity> 
         TextView mTvBelong;                 //归属者
         LabelTextView mLtvState;            //状态
         TextView mTvOS;                     //端
+        TextView mTvProject;                //项目
         public ProjectHolder(ViewGroup parent, int res) {
             super(parent, res);
             mTvProjectName = getView(R.id.rate_tv_project_name);
@@ -49,6 +52,7 @@ public class ProjectTeamAdapter extends RecyclerArrayAdapter<ProjectTeamEntity> 
             mLtvState = getView(R.id.rate_ltv_item_state);
             mTvBelong = getView(R.id.rate_tv_belong);
             mTvOS = getView(R.id.rate_tv_os);
+            mTvProject = getView(R.id.rate_tv_project);
         }
 
         @Override
@@ -58,6 +62,12 @@ public class ProjectTeamAdapter extends RecyclerArrayAdapter<ProjectTeamEntity> 
             mTvUpdater.setText("更新者: " + data.getUpdateUser());
             mTvUpdateTime.setText("更新于: " + data.getUpdateTime());
             mTvBelong.setText("归属于:" + data.getProjectBelong());
+            if (!TextUtils.isEmpty(data.getProjectRateName())) {
+                mTvProject.setVisibility(View.VISIBLE);
+                mTvProject.setText(data.getProjectRateName());
+            }else {
+                mTvProject.setVisibility(View.GONE);
+            }
 
             //计算时间差
             long times = DateUtil.dateToLong(data.getProjectEndTime(), DateUtil.mFormat_date_24) - System.currentTimeMillis();
@@ -77,7 +87,7 @@ public class ProjectTeamAdapter extends RecyclerArrayAdapter<ProjectTeamEntity> 
                 mDpProgress.setTextColor(getContext().getResources().getColor(R.color.widget_color_a5dc86));
             }else {
                 //标签
-                mLtvState.setLabelText("已延期");
+                mLtvState.setLabelText("已逾期");
                 mLtvState.setLabelBackgroundColor(getContext().getResources().getColor(R.color.widget_color_f8bb86));
                 //进度样式
                 mDpProgress.setFinishedStrokeColor(getContext().getResources().getColor(R.color.widget_color_f8bb86));

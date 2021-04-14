@@ -2,12 +2,96 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/widget_color_f5f5f5"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.dayi35.qx_widget.titlebar.TitleBar
+        android:id="@+id/rate_tb_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:widget_centertitle="@string/rate_name"
+        app:widget_righttext="刷新"
+        android:background="@color/widget_color_ffffff"/>
+
+    <View
+        android:layout_width="@dimen/widget_dp_100"
+        android:layout_height="wrap_content"
+        android:background="@color/widget_color_ffffff"
+        android:layout_alignTop="@id/rate_tb_main"
+        android:layout_alignBottom="@id/rate_tb_main"/>
+
+    <RadioGroup
+        android:id="@+id/rate_rgl_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/widget_color_ffffff"
+        android:layout_marginTop="@dimen/widget_dp_1"
+        android:layout_below="@id/rate_tb_main"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/rate_rb_name"
+            style="@style/widget_wh_ww"
+            android:paddingLeft="@dimen/widget_dp_42"
+            android:paddingRight="@dimen/widget_dp_42"
+            android:paddingTop="@dimen/widget_dp_12"
+            android:paddingBottom="@dimen/widget_dp_12"
+            android:gravity="center"
+            android:button="@null"
+            android:textColor="@color/widget_color_2e2e2e"
+            android:text="全部"
+            android:textSize="@dimen/widget_sp_13"
+            android:drawablePadding="@dimen/widget_dp_4"/>
+
+        <RadioButton
+            android:id="@+id/rate_rb_os"
+            style="@style/widget_wh_ww"
+            android:gravity="center"
+            android:button="@null"
+            android:paddingTop="@dimen/widget_dp_12"
+            android:paddingBottom="@dimen/widget_dp_12"
+            android:paddingLeft="@dimen/widget_dp_42"
+            android:paddingRight="@dimen/widget_dp_42"
+            android:textColor="@color/widget_color_2e2e2e"
+            android:text="OS"
+            android:textSize="@dimen/widget_sp_13"
+            android:drawablePadding="@dimen/widget_dp_4"/>
+
+        <RadioButton
+            android:id="@+id/rate_rb_state"
+            style="@style/widget_wh_ww"
+            android:gravity="center"
+            android:button="@null"
+            android:paddingTop="@dimen/widget_dp_12"
+            android:paddingBottom="@dimen/widget_dp_12"
+            android:paddingLeft="@dimen/widget_dp_42"
+            android:paddingRight="@dimen/widget_dp_42"
+            android:textColor="@color/widget_color_2e2e2e"
+            android:text="状态"
+            android:textSize="@dimen/widget_sp_13"
+            android:drawablePadding="@dimen/widget_dp_4"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/rate_tv_project_des"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_dp_50"
+        android:layout_below="@id/rate_rgl_filter"
+        android:background="@color/widget_color_ffffff"
+        android:layout_marginTop="@dimen/widget_dp_1"
+        android:drawableRight="@mipmap/rate_ic_project_add"
+        android:paddingRight="@dimen/widget_dp_15"
+        android:paddingLeft="@dimen/widget_dp_15"
+        android:gravity="center_vertical"
+        android:visibility="gone"/>
 
     <com.dayi35.recycle.view.DYRefreshView
         android:id="@+id/rate_rv_project"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/rate_tv_project_des"
         android:background="@color/widget_color_f5f5f5"
         app:layout_empty="@layout/rate_layout_emptyproject"
         android:paddingBottom="@dimen/widget_dp_10"/>

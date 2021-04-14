@@ -2,6 +2,7 @@ package com.dayi.dy_rate.ui.activity;
 
 import android.content.Intent;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,24 +11,30 @@ import com.dayi.dy_rate.R;
 import com.dayi.dy_rate.R2;
 import com.dayi.dy_rate.contract.UserContract;
 import com.dayi.dy_rate.entity.ProjectEntity;
+import com.dayi.dy_rate.entity.ProjectRateEntity;
 import com.dayi.dy_rate.entity.ProjectTeamEntity;
 import com.dayi.dy_rate.presenter.ProjectPresenter;
 import com.dayi.dy_rate.presenter.ProjectTeamPresenter;
 import com.dayi.dy_rate.utils.UserRateHelper;
 import com.dayi35.qx_base.base.state.BaseStateActivity;
+import com.dayi35.qx_base.beans.BottomPopEntity;
 import com.dayi35.qx_base.beans.EventBusEntity;
 import com.dayi35.qx_base.constant.Constant;
+import com.dayi35.qx_base.pop.BottomCommonPop;
 import com.dayi35.qx_base.utils.EventBusHelper;
 import com.dayi35.qx_base.utils.GsonHelper;
+import com.dayi35.qx_utils.androidcodeutils.SPUtils;
 import com.dayi35.qx_utils.common.DateUtil;
 import com.dayi35.qx_utils.common.StatusBarUtil;
 import com.dayi35.qx_utils.common.ToastUtils;
 import com.dayi35.qx_utils.convert.RCaster;
 import com.dayi35.qx_widget.titlebar.TitleBar;
+import com.google.gson.reflect.TypeToken;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +52,7 @@ public class EditProjectTeamActivity extends BaseStateActivity<ProjectTeamPresen
     private final int TYPEADD = 1;              //添加
     private final int TYPEUPDATE = 2;           //更新
 
+    @BindView(R2.id.rate_tv_project) TextView mTvProject;               //归属项目
     @BindView(R2.id.rate_tb_project_edit) TitleBar mTbTitle;            //title
     @BindView(R2.id.rate_btn_save) Button mBtnAdd;                      //添加/修改
     @BindView(R2.id.rate_et_name) EditText mEtName;                     //项目名称
@@ -56,7 +64,13 @@ public class EditProjectTeamActivity extends BaseStateActivity<ProjectTeamPresen
 
     private int type;                                                   //界面 1.新增  2.修改
     private String mProjectJson;                                        //projectJson
-    private ProjectTeamEntity mProjectEntity;                               //项目实例
+    private ProjectTeamEntity mProjectEntity;                           //组件实例
+    private String projectId;                                           //所选项目的ID
+    private String projectName;                                         //所选项目的名称
+    private List<ProjectRateEntity> mRateEntities = new ArrayList<>();  //项目实例集合
+
+    private BottomCommonPop.Builder projectPop;                         //项目选择弹窗
+
 
     @Override
     protected int getMainLayoutId() {
@@ -92,6 +106,21 @@ public class EditProjectTeamActivity extends BaseStateActivity<ProjectTeamPresen
                 }
             }
         });
+        initProjectData();
+
+    }
+
+    /**
+     * 获取项目集的相关数据
+     */
+    private void initProjectData() {
+        String json = SPUtils.getInstance().getString(Constant.KeySPUtils.RATE_PROJECTRATE);
+        //是否有本地缓存，若无，获取服务器数据
+        if (!TextUtils.isEmpty(json)){
+            Type type = new TypeToken<List<ProjectRateEntity>>(){}.getType();
+            List<ProjectRateEntity> entities = GsonHelper.JSONToObj(json, type);
+            mRateEntities.addAll(entities);
+        }
     }
 
     @Override
@@ -113,11 +142,36 @@ public class EditProjectTeamActivity extends BaseStateActivity<ProjectTeamPresen
             mEtStartTime.setText(mProjectEntity.getProjectStartTime());
             mEtEndTime.setEnabled(false);
             mEtEndTime.setText(mProjectEntity.getProjectEndTime());
+            mTvProject.setText(mProjectEntity.getProjectRateName());
+            projectId = mProjectEntity.getProjectRateId();
+            projectName = mProjectEntity.getProjectRateName();
         }else {//添加
             mEtName.setEnabled(true);
             mEtBelong.setEnabled(true);
             mEtStartTime.setEnabled(true);
             mEtEndTime.setEnabled(true);
+            mTvProject.setOnClickListener(v -> {
+                if (null != mRateEntities && mRateEntities.size() > 0) {
+                    if (null == projectPop) {
+                        List<BottomPopEntity> bottomPopEntities = new ArrayList<>();
+                        for (ProjectRateEntity entity : mRateEntities
+                        ) {
+                            BottomPopEntity bottomPopEntity = new BottomPopEntity(entity.getProjectName());
+                            bottomPopEntities.add(bottomPopEntity);
+                        }
+                        projectPop = new BottomCommonPop.Builder(EditProjectTeamActivity.this)
+                                .create(v)
+                                .init(bottomPopEntities, (value, pos) -> {
+                                    projectId = mRateEntities.get(pos).getObjectId();
+                                    projectName = mRateEntities.get(pos).getProjectName();
+                                    mTvProject.setText(projectName);
+                                });
+                    }
+                    projectPop.show();
+                }else {
+                    ToastUtils.showShort("未获取到可选项目数据");
+                }
+            });
         }
     }
 
@@ -137,6 +191,8 @@ public class EditProjectTeamActivity extends BaseStateActivity<ProjectTeamPresen
             mProjectEntity.setCreateTime(DateUtil.formatByTimeStamp(System.currentTimeMillis(), DateUtil.mFormat_date_24));
             mProjectEntity.setProjectState(1);       //创建的时候设置状态为进行中
             mProjectEntity.setProjectOS("1");        //设置为Android端
+            mProjectEntity.setProjectRateId(projectId);
+            mProjectEntity.setProjectRateName(projectName);
         }
         mProjectEntity.setProjectName(mEtName.getText().toString().trim());
         mProjectEntity.setProjectBelong(mEtBelong.getText().toString().trim());
@@ -145,6 +201,16 @@ public class EditProjectTeamActivity extends BaseStateActivity<ProjectTeamPresen
         mProjectEntity.setProjectProgress(mEtProgress.getText().toString().trim());
         mProjectEntity.setUpdateUser(UserRateHelper.get().getUserNickName());
         mProjectEntity.setUpdateTime(DateUtil.formatByTimeStamp(System.currentTimeMillis(), DateUtil.mFormat_date_24));
+        long times = DateUtil.dateToLong(mProjectEntity.getProjectEndTime(), DateUtil.mFormat_date_24) - System.currentTimeMillis();
+        int statu = 0;
+        if (100 == Integer.valueOf(mProjectEntity.getProjectProgress())){
+            statu = 2;
+        }else if (times >= 0){
+            statu =1;
+        }else {
+            statu = 3;
+        }
+        mProjectEntity.setProjectState(statu);
         return mProjectEntity;
     }
 
@@ -168,6 +234,9 @@ public class EditProjectTeamActivity extends BaseStateActivity<ProjectTeamPresen
         }else if (TextUtils.isEmpty(mEtProgress.getText().toString().trim())){
             ToastUtils.showShort("请输入项目当前进度");
             return false;
+        }else if (TextUtils.isEmpty(projectName) || TextUtils.isEmpty(projectId)){
+            ToastUtils.showShort("未选择归属项目");
+            return false;
         }
         return true;
     }
@@ -182,6 +251,11 @@ public class EditProjectTeamActivity extends BaseStateActivity<ProjectTeamPresen
         EventBusHelper.onSendCode(Constant.CodeEvent.RATE_PROJECTTEAMUPDATE);
         Intent intent = new Intent(this, ProjectTeamListActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onGetRateSuccess(List<ProjectRateEntity> entities) {
+
     }
 
     /**
