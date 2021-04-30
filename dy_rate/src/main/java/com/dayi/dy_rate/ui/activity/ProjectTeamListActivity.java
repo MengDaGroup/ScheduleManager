@@ -369,7 +369,7 @@ public class ProjectTeamListActivity extends BaseStateActivity<ProjectTeamPresen
     private void refresh(){
         mAdapter.clear();
         mListTeam.clear();
-        getP().search(mObjectId, mOs, mState);
+        getP().search("", mOs, mState);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

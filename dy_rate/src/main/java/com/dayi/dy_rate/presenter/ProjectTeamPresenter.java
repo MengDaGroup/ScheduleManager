@@ -88,15 +88,15 @@ public class ProjectTeamPresenter extends BasePresentImpl<UserContract.ProjectTe
     public void search(String objectId, int os, int state) {
         mView.showLoading();
         BmobQuery<ProjectTeamEntity> query = new BmobQuery<ProjectTeamEntity>();
-        if (!TextUtils.isEmpty(objectId)) {
-            query.addWhereEqualTo("projectRateId", objectId);
-        }
-        if (0 != os){
-            query.addWhereEqualTo("projectOS", os);
-        }
-        if (0 != state){
-            query.addWhereEqualTo("projectState", state);
-        }
+//        if (!TextUtils.isEmpty(objectId)) {
+//            query.addWhereEqualTo("projectRateId", objectId);
+//        }
+//        if (0 != os){
+//            query.addWhereEqualTo("projectOS", os);
+//        }
+//        if (0 != state){
+//            query.addWhereEqualTo("projectState", state);
+//        }
         query.findObjects(new FindListener<ProjectTeamEntity>() {
             @Override
             public void done(List<ProjectTeamEntity> list, BmobException e) {

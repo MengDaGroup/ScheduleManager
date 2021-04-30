@@ -81,7 +81,7 @@
         android:layout_below="@id/rate_rgl_filter"
         android:background="@color/widget_color_ffffff"
         android:layout_marginTop="@dimen/widget_dp_1"
-        android:drawableRight="@mipmap/rate_ic_project_add"
+        android:drawableRight="@mipmap/widget_ic_star_focusing"
         android:paddingRight="@dimen/widget_dp_15"
         android:paddingLeft="@dimen/widget_dp_15"
         android:gravity="center_vertical"
