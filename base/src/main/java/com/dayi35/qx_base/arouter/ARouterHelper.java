@@ -322,7 +322,7 @@ public class ARouterHelper {
                 Timber.i("ARouterHelper" + "---找不到了");
                 //降级处理
                 //DegradeServiceImpl degradeService = new DegradeServiceImpl();
-                //degradeService.onLost(Utils.getApp(),postcard);
+                //degradeService.onLost(CacheUtils.getApp(),postcard);
 
                 //无法找到路径，作替换处理
                 PathReplaceServiceImpl pathReplaceService = new PathReplaceServiceImpl();

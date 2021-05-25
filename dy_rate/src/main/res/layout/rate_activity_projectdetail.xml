@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/widget_color_f5f5f5">
+    android:background="@color/widget_color_f5f5f5"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.dayi35.qx_widget.titlebar.TitleBar
-        android:id="@+id/rate_tb_project_preview"
+        android:id="@+id/rate_tb_projectteam_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:widget_centertitle="明细预览"
-        app:widget_righttext="更新"
-        android:background="@color/widget_color_ffffff"/>
+        app:widget_centertitle="项目预览"
+        android:background="@color/widget_color_ffffff"
+        app:widget_righttext="添加组件"/>
 
     <RelativeLayout
         android:id="@+id/rate_rl_card"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/widget_dp_150"
-        android:layout_below="@id/rate_tb_project_preview"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rate_tb_projectteam_edit"
         android:layout_marginTop="@dimen/widget_dp_20"
         android:background="@drawable/widget_shape_solid_ffffff_r6"
         android:layout_marginLeft="@dimen/widget_dp_15"
-        android:layout_marginRight="@dimen/widget_dp_15">
+        android:layout_marginRight="@dimen/widget_dp_15"
+        android:paddingBottom="@dimen/widget_dp_12">
 
         <com.dayi35.qx_widget.progress.DonutProgress
             android:id="@+id/rate_dp_progress"
@@ -77,6 +78,7 @@
             android:paddingBottom="@dimen/widget_dp_2"
             android:paddingTop="@dimen/widget_dp_2"
             android:text="蔡建"
+            android:visibility="gone"
             android:textColor="@color/widget_color_ffffff"
             android:textSize="@dimen/widget_sp_12"
             android:layout_alignTop="@id/rate_dp_progress"
@@ -119,6 +121,27 @@
             android:layout_marginTop="@dimen/widget_dp_6"
             android:background="@drawable/widget_sele_redbutton"/>
 
+        <TextView
+            android:id="@+id/rate_tv_remark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:layout_toRightOf="@id/rate_dp_progress"
+            android:layout_below="@id/rate_tv_update_time"
+            android:layout_marginTop="@dimen/widget_dp_4"
+            android:layout_marginLeft="@dimen/widget_dp_5"
+            android:background="@drawable/widget_sele_bluebutton"
+            android:textSize="@dimen/widget_sp_13"
+            android:textColor="@color/widget_color_ffffff"
+            android:paddingLeft="@dimen/widget_dp_6"
+            android:paddingRight="@dimen/widget_dp_6"
+            android:paddingBottom="@dimen/widget_dp_2"
+            android:paddingTop="@dimen/widget_dp_2"
+            android:layout_marginBottom="@dimen/widget_dp_10"
+            android:layout_marginRight="@dimen/widget_dp_15"
+            android:ellipsize="end"
+            />
+
         <com.dayi35.qx_widget.labelview.LabelTextView
             android:id="@+id/rate_ltv_preview_state"
             android:layout_width="@dimen/widget_dp_60"
@@ -137,32 +160,13 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/rate_tv_notedes"
+    <com.dayi35.recycle.view.DYRefreshView
+        android:id="@+id/rate_rv_project"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/widget_dp_50"
+        android:layout_height="match_parent"
+        android:background="@color/widget_color_f5f5f5"
         android:layout_below="@id/rate_rl_card"
-        android:layout_marginTop="@dimen/widget_dp_10"
-        android:background="@color/widget_color_ffffff"
-        android:layout_marginRight="@dimen/widget_dp_15"
-        android:layout_marginLeft="@dimen/widget_dp_15"
-        android:textSize="@dimen/widget_sp_14"
-        android:textColor="@color/widget_color_2e2e2e"
-        android:text="更新说明"
-        android:paddingLeft="@dimen/widget_dp_10"
-        android:gravity="center_vertical"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rate_rv_notes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rate_tv_notedes"
-        android:background="@color/widget_color_ffffff"
-        android:layout_marginLeft="@dimen/widget_dp_15"
-        android:layout_marginRight="@dimen/widget_dp_15"
-        android:layout_marginBottom="@dimen/widget_dp_10"
-        android:overScrollMode="never"
-        />
-
+        app:layout_empty="@layout/rate_layout_emptyproject"
+        android:paddingBottom="@dimen/widget_dp_10"/>
 
 </RelativeLayout>

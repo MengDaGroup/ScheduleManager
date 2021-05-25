@@ -1,9 +1,5 @@
 package com.dayi.dy_rate.entity;
 
-import java.util.List;
-
-import cn.bmob.v3.BmobObject;
-
 /**
  * =========================================
  * 作    者: Akee
@@ -12,122 +8,119 @@ import cn.bmob.v3.BmobObject;
  * 修订历史:
  * =========================================
  */
-public class ProjectEntity extends BmobObject {
-    private List<String> projectNote;           //项目备注
-    private String projectOS;                   //项目端1.Android 2.IOS
-    private String projectEndTime;              //项目结束时间
-    private String projectStartTime;            //项目开始时间
-    private String createTime;                  //项目要创建时间
-    private String createUser;                  //项目创建者
-    private String updateTime;                  //项目更新时间
-    private String updateUser;                  //项目更新者
-    private String projectProgress;             //项目进度
-    private String projectBelong;               //项目归属
-    private String projectName;                 //项目名
-    private String projectTeamId;               //所属项目组ID
-    private int projectState;                   //项目状态 1.进行中 2.已结束
+public class ProjectEntity {
 
-    public String getProjectTeamId() {
-        return projectTeamId;
+
+    /**
+     * id : 016098c9b4004da238
+     * name : 雀喜易购
+     * status : 4
+     * statusStr : 逾期
+     * progress : 24.801
+     * startTime : 2021-05-01
+     * endTime : 2021-05-03
+     * os : 安卓
+     * createdAt : 2021-05-10 13:50:44
+     * updatedAt : 2021-05-11 15:27:40
+     */
+
+    private String id;
+    private String name;
+    private int status;
+    private String statusStr;
+    private float progress;
+    private String startTime;
+    private String endTime;
+    private String os;
+    private String createdAt;
+    private String updatedAt;
+    private String remark;
+
+    public String getRemark() {
+        return remark;
     }
 
-    public void setProjectTeamId(String projectTeamId) {
-        this.projectTeamId = projectTeamId;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
-    public List<String> getProjectNote() {
-        return projectNote;
+    public String getId() {
+        return id;
     }
 
-    public void setProjectNote(List<String> projectNote) {
-        this.projectNote = projectNote;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getProjectOS() {
-        return projectOS;
+    public String getName() {
+        return name;
     }
 
-    public void setProjectOS(String projectOS) {
-        this.projectOS = projectOS;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getProjectEndTime() {
-        return projectEndTime;
+    public int getStatus() {
+        return status;
     }
 
-    public void setProjectEndTime(String projectEndTime) {
-        this.projectEndTime = projectEndTime;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public String getProjectStartTime() {
-        return projectStartTime;
+    public String getStatusStr() {
+        return statusStr;
     }
 
-    public void setProjectStartTime(String projectStartTime) {
-        this.projectStartTime = projectStartTime;
+    public void setStatusStr(String statusStr) {
+        this.statusStr = statusStr;
     }
 
-    public String getCreateTime() {
-        return createTime;
+    public float getProgress() {
+        return progress;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setProgress(float progress) {
+        this.progress = progress;
     }
 
-    public String getCreateUser() {
-        return createUser;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public String getUpdateTime() {
-        return updateTime;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
-    public String getUpdateUser() {
-        return updateUser;
+    public String getOs() {
+        return os;
     }
 
-    public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser;
+    public void setOs(String os) {
+        this.os = os;
     }
 
-    public String getProjectProgress() {
-        return projectProgress;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setProjectProgress(String projectProgress) {
-        this.projectProgress = projectProgress;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public String getProjectBelong() {
-        return projectBelong;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setProjectBelong(String projectBelong) {
-        this.projectBelong = projectBelong;
-    }
-
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
-
-    public int getProjectState() {
-        return projectState;
-    }
-
-    public void setProjectState(int projectState) {
-        this.projectState = projectState;
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

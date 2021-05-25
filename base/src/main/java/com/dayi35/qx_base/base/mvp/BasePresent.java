@@ -12,6 +12,8 @@ import io.reactivex.disposables.Disposable;
  */
 public interface BasePresent {
     //绑定数据
+    void subscribe(Disposable subscription);
+    //绑定数据
     void subscribe();
     //解除绑定
     void unSubscribe();

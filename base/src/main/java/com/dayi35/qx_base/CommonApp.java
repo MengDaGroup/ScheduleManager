@@ -39,19 +39,27 @@ public class CommonApp extends Application {
         Utils.init(this);
         ins = this;
         instance = this;
+        initBase();
         initARouter();
         initTimber();
         initImagePicker();
         Bmob.initialize(this, Constant.KeyConstants.bombAppKey);
     }
 
-
+    /**
+     * 初始化基础组件
+     */
+    private void initBase() {
+        new BaseManager.Builder(ins)
+                .mTimeCache(Constant.ValueConstants.TIME_CACHE)
+                .build();
+    }
 
     /**
      * 初始化ARouter相关
      */
     private void initARouter(){
-        if (Config.DEBUG){
+        if (Constant.ValueConstants.isDebug){
             ARouter.openLog();// Print log
             ARouter.openDebug();//open debug
         }
@@ -62,7 +70,7 @@ public class CommonApp extends Application {
      * 初始化Timber日志
      */
     private void initTimber(){
-        if (Config.DEBUG) {
+        if (Constant.ValueConstants.isDebug) {
             Timber.plant(new Timber.DebugTree());
         } else {
             Timber.plant(new ProductionTree());

@@ -49,6 +49,19 @@
         android:layout_marginTop="@dimen/widget_dp_4"
         android:textColor="@color/widget_color_666666"/>
 
+    <TextView
+        android:id="@+id/rate_tv_project"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/widget_dp_20"
+        android:layout_alignBottom="@id/rate_tv_update_time"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="@dimen/widget_dp_10"
+        android:paddingRight="@dimen/widget_dp_10"
+        android:textColor="@color/widget_color_ffffff"
+        android:textSize="@dimen/widget_sp_12"
+        android:gravity="center_vertical"
+        android:background="@drawable/rate_shape_solid_ff9912_lr15"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/widget_dp_1"
@@ -57,7 +70,6 @@
         android:layout_marginTop="@dimen/widget_dp_6"/>
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/rate_tv_os"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,7 +81,6 @@
         />
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/rate_tv_belong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

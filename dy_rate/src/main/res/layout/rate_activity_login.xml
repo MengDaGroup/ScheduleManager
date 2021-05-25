@@ -4,31 +4,60 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+    <TextView
+        android:id="@+id/user_tv_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/widget_dp_120"
+        android:text="进度管理"
+        android:textSize="@dimen/widget_sp_36"
+        android:textColor="@color/widget_color_5e9cf2"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/rate_ic_aboult_left"
+        android:layout_marginTop="@dimen/widget_dp_100"
+        android:layout_marginLeft="@dimen/widget_dp_70"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/rate_ic_aboult_right"
+        android:layout_marginTop="@dimen/widget_dp_152"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/widget_dp_70"/>
+
+    <View
+        android:id="@+id/user_v_line1"
+        style="@style/widget_dividingline_style"
+        android:layout_marginLeft="@dimen/widget_dp_38"
+        android:layout_marginRight="@dimen/widget_dp_38"
+        android:layout_centerVertical="true"/>
+
     <com.dayi35.qx_widget.widget.CusEditText
         android:id="@+id/user_et_phone"
         style="@style/rate_etinput_style"
         android:layout_marginLeft="@dimen/widget_dp_38"
         android:layout_marginRight="@dimen/widget_dp_38"
-        android:layout_marginTop="@dimen/widget_dp_120"
+        android:layout_above="@id/user_v_line1"
         android:hint="请输入账号"
         android:inputType="text"
-        android:maxLength="15" />
-
-    <View
-        style="@style/widget_dividingline_style"
-        android:layout_marginLeft="@dimen/widget_dp_38"
-        android:layout_marginRight="@dimen/widget_dp_38"
-        android:layout_below="@id/user_et_phone"/>
+        android:maxLength="15"
+        android:text="caij"/>
 
     <com.dayi35.qx_widget.widget.CusEditText
         android:id="@+id/user_et_password"
         style="@style/rate_etinput_style"
         android:layout_marginLeft="@dimen/widget_dp_38"
         android:layout_marginRight="@dimen/widget_dp_38"
-        android:layout_marginTop="@dimen/widget_dp_20"
+        android:layout_marginTop="@dimen/widget_dp_14"
         android:hint="请输入密码"
         android:inputType="textPassword"
         android:layout_below="@id/user_et_phone"
+        android:text="123456"
         android:maxLength="15" />
 
     <View
@@ -45,6 +74,9 @@
         android:layout_marginTop="@dimen/widget_dp_40"
         android:layout_marginLeft="@dimen/widget_dp_38"
         android:layout_marginRight="@dimen/widget_dp_38"
+        android:textColor="@color/widget_color_ffffff"
+        android:textSize="@dimen/widget_sp_18"
+        android:background="@drawable/rate_shape_solid_5e9cf2_r10"
         android:text="登录" />
 
 </RelativeLayout>

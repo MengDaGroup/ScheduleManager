@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/widget_dp_10"
+    android:layout_marginLeft="@dimen/widget_dp_15"
+    android:layout_marginRight="@dimen/widget_dp_15"
+    android:background="@drawable/widget_shape_solid_ffffff_r6">
+
+
+    <com.dayi35.qx_widget.progress.DonutProgress
+        android:id="@+id/rate_dp_progress"
+        android:layout_width="@dimen/widget_dp_70"
+        android:layout_height="@dimen/widget_dp_70"
+        app:widget_donut_progress="60"
+        app:widget_donut_max="100"
+        app:widget_donut_text_size="@dimen/widget_sp_10"
+        android:layout_marginTop="@dimen/widget_dp_10"
+        android:layout_marginLeft="@dimen/widget_dp_10"/>
+
+    <TextView
+        android:id="@+id/rate_tv_project_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/widget_sp_16"
+        android:textColor="@color/widget_color_2e2e2e"
+        android:layout_toRightOf="@id/rate_dp_progress"
+        android:layout_marginLeft="@dimen/widget_dp_10"
+        android:layout_marginTop="@dimen/widget_dp_13"/>
+
+    <TextView
+        android:id="@+id/rate_tv_updater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rate_tv_project_name"
+        android:layout_toRightOf="@id/rate_dp_progress"
+        android:layout_marginLeft="@dimen/widget_dp_10"
+        android:layout_marginTop="@dimen/widget_dp_8"
+        android:textColor="@color/widget_color_666666"/>
+
+    <TextView
+        android:id="@+id/rate_tv_update_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rate_tv_updater"
+        android:layout_toRightOf="@id/rate_dp_progress"
+        android:layout_marginLeft="@dimen/widget_dp_10"
+        android:layout_marginTop="@dimen/widget_dp_4"
+        android:textColor="@color/widget_color_666666"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_dp_1"
+        android:layout_below="@id/rate_dp_progress"
+        android:background="@color/widget_color_f5f5f5"
+        android:layout_marginTop="@dimen/widget_dp_6"/>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/rate_tv_os"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rate_dp_progress"
+        android:layout_marginTop="@dimen/widget_dp_20"
+        android:layout_marginBottom="@dimen/widget_dp_16"
+        android:layout_marginLeft="@dimen/widget_dp_10"
+        android:textSize="@dimen/widget_sp_18"
+        />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/rate_tv_belong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rate_dp_progress"
+        android:layout_marginTop="@dimen/widget_dp_20"
+        android:layout_marginBottom="@dimen/widget_dp_16"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/widget_dp_15"
+        android:textSize="@dimen/widget_sp_15"
+        />
+
+    <com.dayi35.qx_widget.labelview.LabelTextView
+        android:id="@+id/rate_ltv_item_state"
+        android:layout_width="@dimen/widget_dp_60"
+        android:layout_height="@dimen/widget_dp_60"
+        android:gravity="center"
+        android:padding="@dimen/widget_dp_16"
+        app:widget_label_backgroundColor="@color/widget_color_cd5b55"
+        app:widget_label_distance="@dimen/widget_dp_25"
+        app:widget_label_orientation="RIGHT_TOP"
+        app:widget_label_text="状态"
+        app:widget_label_textSize="10sp"
+        app:widget_label_height="@dimen/widget_dp_34"
+        android:layout_alignParentRight="true"
+        />
+
+    <TextView
+        android:id="@+id/rate_tv_component"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/widget_dp_20"
+        android:layout_alignBottom="@id/rate_tv_update_time"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="@dimen/widget_dp_10"
+        android:paddingRight="@dimen/widget_dp_10"
+        android:textColor="@color/widget_color_ffffff"
+        android:textSize="@dimen/widget_sp_12"
+        android:gravity="center_vertical"
+        android:background="@drawable/rate_shape_solid_ff9912_lr15"/>
+
+</RelativeLayout>

@@ -14,6 +14,7 @@ import androidx.annotation.Size;
 
 import com.dayi35.qx_widget.pickers.adapter.ArrayWheelAdapter;
 import com.dayi35.qx_widget.pickers.common.LineConfig;
+import com.dayi35.qx_widget.pickers.entity.SimpleItemBean;
 import com.dayi35.qx_widget.pickers.listeners.OnItemPickListener;
 import com.dayi35.qx_widget.pickers.listeners.OnMoreItemPickListener;
 import com.dayi35.qx_widget.pickers.listeners.OnMoreWheelListener;
@@ -36,7 +37,7 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
  * @see DataProvider
  */
 public class LinkagePicker extends WheelPicker {
-    protected String selectedFirstItem = "", selectedSecondItem = "", selectedThirdItem = "";
+    protected String selectedFirstItem = "", selectedSecondItem = "", selectedThirdItem = "", selectedSecondValue = "", selectedFristValue = "", selectedThridValue = "";
     protected String firstLabel = "", secondLabel = "", thirdLabel = "";
     protected int selectedFirstIndex = 0, selectedSecondIndex = 0, selectedThirdIndex = 0;
     protected DataProvider provider;
@@ -506,12 +507,21 @@ public class LinkagePicker extends WheelPicker {
             return;
         }
         selectedFirstItem = provider.provideFirstData().get(selectedFirstIndex);
+        selectedFristValue = provider.provideFirstDataAreaId().get(selectedFirstIndex);
         selectedSecondItem = provider.provideSecondData(selectedFirstIndex).get(selectedSecondIndex);
+        selectedSecondValue = provider.provideSecondDataAreaId(selectedFirstIndex).get(selectedSecondIndex);
+        SimpleItemBean itemFrist = new SimpleItemBean(selectedFirstItem, selectedFristValue);
+        SimpleItemBean itemSecond = new SimpleItemBean(selectedSecondItem, selectedSecondValue);
         if (provider.isOnlyTwo()) {
-            onMoreItemPickListener.onItemPicked(selectedFirstItem, selectedSecondItem, null);
+            /**
+             * 注意，这个地方是为了拼凑二级的value，暂时在第三级放置
+             */
+            onMoreItemPickListener.onItemPicked(itemFrist, itemSecond, null);
         } else {
             selectedThirdItem = provider.provideThirdData(selectedFirstIndex, selectedSecondIndex).get(selectedThirdIndex);
-            onMoreItemPickListener.onItemPicked(selectedFirstItem, selectedSecondItem, selectedThirdItem);
+            selectedThridValue = provider.provideThirdData(selectedFirstIndex, selectedSecondIndex).get(selectedThirdIndex);
+            SimpleItemBean itemThrid = new SimpleItemBean(selectedThirdItem, selectedThridValue);
+            onMoreItemPickListener.onItemPicked(itemFrist, itemSecond, itemThrid);
         }
     }
 

@@ -575,7 +575,7 @@ public class DonutProgress extends View
     {
         if (!TextUtils.isEmpty(percent))
         {
-            setProgress(Integer.parseInt(percent));
+            setProgress(Float.valueOf(percent));
         }
     }
 }

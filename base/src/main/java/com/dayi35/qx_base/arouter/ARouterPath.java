@@ -11,34 +11,76 @@ package com.dayi35.qx_base.arouter;
 public interface ARouterPath {
 
     /**
-     * 活动组件
+     * 进度管理组件
      */
-    interface Activity {
-        String MOUDLE = "/act/";
-        String COMMISSION_ACTIVITY = MOUDLE + "commission";                         //高佣界面
-        String COMMISSIONPRO_ACTIVITY = MOUDLE + "commission_pro";                  //高佣活动场次详情界面
-        String SNAPUP_ACTIVITY = MOUDLE + "snapupactivity";                         //限时购界面
-        String ORDERGROUP_ACTIVITY = MOUDLE + "ordergroupactivity";                 //拼团活动界面
+    interface Rate{
+        String MODULE = "/rate/";
+
+        interface ProjectUpdate{
+            String PARH = MODULE + "project_update";
+        }
+
+        /**
+         * 项目详情
+         */
+        interface ProjectDetail{
+            String PATH = MODULE + "project_detail";
+            interface Params{
+                String PROJECTID = "project_id";    //项目ＩＤ
+            }
+        }
+
+        /**
+         * 组件（模块）详情
+         */
+        interface ModuleDetail{
+            String PATH = MODULE + "module_detail";
+            interface Params{
+                String MODULEID = "module_id";      //组件ID
+                String PROJECTID = "project_id";    //项目ID
+            }
+        }
+
+        /**
+         * 组件（模块）创建/更新
+         */
+        interface ModuleUpdate{
+            String PATH = MODULE + "module_update";
+            interface Params{
+                String MODULEID = "module_id";      //组件ID
+                String PROJECTID = "project_id";    //项目ＩＤ
+                String STARTTIME = "start_time";    //开始时间
+                String ENDTIME = "end_time";        //结束时间
+            }
+        }
+
+        /**
+         * 功能详情
+         */
+        interface ComponentDetail{
+            String PATH = MODULE + "component_detail";
+            interface Params{
+                String COMPONENTID = "component_id";
+            }
+        }
+
+        /**
+         * 功能创建/更新
+         */
+        interface ComponentUpdate{
+            String PATH = MODULE + "component_update";
+            interface Params{
+                String PROJECTID = "project_id";                //项目ID
+                String MODULEID = "module_id";                  //组件ID
+                String COMPONENTID = "component_id";            //功能ID
+                String COMPONENTPROGRESS = "component_progress";//当前进度
+                String COMPONENTNAME = "component_name";    //功能名
+                String STARTTIME = "start_time";        //开始时间
+                String ENDTIME = "end_time";            //结束时间
+            }
+        }
     }
 
-    /**
-     * 广告（推广）组件
-     */
-    interface AD{
-        String MOUDLE = "/ad/";
-        String AD_CONTRACTIMPL = MOUDLE + "contractimpl";       //ad广告对外调用协议实现类
-
-        String SHOW_ACTIVITY = MOUDLE + "showactivity";         //展示指引界面
-    }
-
-    /**
-     * APP组件
-     */
-    interface APP{
-        String MOUDLE = "/app/";
-
-        String HOME_ACTIVITY = MOUDLE + "homeactivity";                      //主界面
-    }
 
     /**
      * common
@@ -50,20 +92,6 @@ public interface ARouterPath {
         String WEB_ACTIVITY = MODULE + "webactivity";   //网页
     }
 
-
-    /**
-     * 评论组件
-     */
-    interface Project{
-        String MOUDLE = "/Project/";
-        //项目列表界面
-        interface ProjectList{
-            String path = MOUDLE + "projectlist";
-            interface Param{
-
-            }
-        }
-    }
 
     /**
      * 登录组件

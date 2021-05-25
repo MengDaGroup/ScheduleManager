@@ -15,7 +15,8 @@ import java.util.List;
  *
  * @author Akeecai
  * @version [版本号, 2016/6/6]
- * @see [相关类/方法]
+ * @see [相关类/方法]    Type type = new TypeToken<T>(){}.getType();
+ *             T entity = GsonHelper.JSONToObj(json, type);
  * @since [V1]
  */
 public class GsonHelper {

@@ -10,4 +10,6 @@ dependencies {
     implementation supportLibrary.appcompat
     implementation library.zxing
     implementation files('libs/commons-lang3-3.7.jar')
+    //Cache
+    implementation 'com.jakewharton:disklrucache:2.0.2'
 }

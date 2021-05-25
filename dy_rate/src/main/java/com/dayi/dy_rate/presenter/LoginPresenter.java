@@ -1,12 +1,12 @@
 package com.dayi.dy_rate.presenter;
 
+import com.dayi.dy_rate.model.RateModel;
 import com.dayi.dy_rate.contract.UserContract;
 import com.dayi.dy_rate.entity.DyUser;
+import com.dayi.dy_rate.entity.RateBaseEntity;
 import com.dayi.dy_rate.entity.UserEntity;
 import com.dayi.dy_rate.utils.UserRateHelper;
-import com.dayi35.qx_base.base.callback.OnJsonCallback;
-import com.dayi35.qx_base.base.mvp.BasePresentImpl;
-import com.dayi35.qx_base.utils.GsonHelper;
+import com.dayi35.qx_base.http.RequestCallback;
 import com.dayi35.qx_utils.common.ToastUtils;
 
 import java.util.List;
@@ -14,7 +14,6 @@ import java.util.List;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.SaveListener;
 
 /**
  * =========================================
@@ -24,31 +23,34 @@ import cn.bmob.v3.listener.SaveListener;
  * 修订历史:
  * =========================================
  */
-public class LoginPresenter extends BasePresentImpl<UserContract.LoginView> implements UserContract.LoginPresenter {
-
+public class LoginPresenter extends BasePresentHttpImp<UserContract.LoginView> implements UserContract.LoginPresenter {
+    private RateModel model;
     public LoginPresenter(UserContract.LoginView mView) {
         super(mView);
+        model = RateModel.getInstance();
     }
 
     /**
-     * 登录
-     * @param entity
-     * @param password
+     * 用户登录
+     * @param account       账号
+     * @param password      密码
      */
     @Override
-    public void login(DyUser entity, String password) {
+    public void login(String account, String password) {
         mView.showLoading();
-        entity.login(new SaveListener<DyUser>() {
+        conver(model.userLogin(account, password), new RequestCallback<RateBaseEntity<DyUser>>() {
             @Override
-            public void done(DyUser entity, BmobException e) {
+            public void onSuccess(RateBaseEntity<DyUser> entity) {
                 mView.hideLoading();
-                if (null == e){
-                    UserRateHelper.get().saveUserName(entity.getUsername());
-                    UserRateHelper.get().savePassWord(password);
-                    getUserInfo(entity.getObjectId());
-                }else {
-                    ToastUtils.showShort("登陆失败");
-                }
+                UserRateHelper.get().saveUserName(account);
+                UserRateHelper.get().savePassWord(password);
+                mView.onLoginSuccess();
+            }
+
+            @Override
+            public void onError(String err) {
+                mView.hideLoading();
+                ToastUtils.showShort(err);
             }
         });
     }
@@ -75,5 +77,6 @@ public class LoginPresenter extends BasePresentImpl<UserContract.LoginView> impl
             }
         });
     }
+
 
 }

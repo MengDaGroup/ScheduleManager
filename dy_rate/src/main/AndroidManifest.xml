@@ -29,22 +29,28 @@
             </intent-filter>
         </activity>
 
-        <!--项目组列表-->
-        <activity android:name=".ui.activity.ProjectTeamListActivity"
+        <!--项目列表-->
+        <activity android:name=".ui.activity.ProjectListActivity"
             android:launchMode="singleTask"/>
 
-        <!--项目组编辑-->
-        <activity android:name=".ui.activity.EditProjectTeamActivity"/>
-
-        <!--项目列表-->
-        <activity android:name=".ui.activity.ProjectListActivity"/>
-
         <!--项目编辑-->
-        <activity android:name=".ui.activity.EditProjectActivity"
+        <activity android:name=".ui.activity.ProjectUpdateActivity"/>
+
+        <!--项目详情-->
+        <activity android:name=".ui.activity.ProjectDetailActivity"/>
+
+        <!--组件详情-->
+        <activity android:name=".ui.activity.ModuleDetailActivity"/>
+
+        <!--组件更新界面-->
+        <activity android:name=".ui.activity.ModuleUpdateActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"/>
 
-        <!--项目预览-->
-        <activity android:name=".ui.activity.ProjectPreviewActivity"/>
+        <!--功能详情界面-->
+        <activity android:name=".ui.activity.ComponentDetailActivity"/>
+
+        <!--功能更新界面-->
+        <activity android:name=".ui.activity.ComponentUpdateActivity"/>
 
     </application>
 

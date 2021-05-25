@@ -9,7 +9,7 @@
         android:id="@+id/rate_tb_project_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:widget_centertitle="编辑组件" />
+        app:widget_centertitle="组件" />
 
     <View
         android:layout_width="match_parent"
@@ -38,37 +38,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="归属项目："
-                    android:layout_marginLeft="@dimen/widget_dp_15"
-                    android:textSize="@dimen/widget_sp_14"
-                    android:textColor="@color/widget_color_2e2e2e"/>
-
-                <TextView
-                    android:id="@+id/rate_tv_project"
-                    style="@style/rate_et2e2e2e_h999999_style"
-                    android:layout_marginRight="@dimen/widget_dp_15"
-                    android:textSize="@dimen/widget_sp_14"
-                    android:hint="点击选择项目"
-                    android:maxLines="1"
-                    />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/widget_dp_1"
-                android:background="@color/widget_color_f5f5f5"
-                android:layout_marginLeft="@dimen/widget_dp_15"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/widget_dp_60"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="组件名称："
                     android:layout_marginLeft="@dimen/widget_dp_15"
                     android:textSize="@dimen/widget_sp_14"
@@ -79,7 +48,7 @@
                     style="@style/rate_et2e2e2e_h999999_style"
                     android:layout_marginRight="@dimen/widget_dp_15"
                     android:textSize="@dimen/widget_sp_14"
-                    android:hint="请输入组件名称"
+                    android:hint="请输入项目名称"
                     android:maxLines="1"
                     />
 
@@ -105,12 +74,12 @@
                     android:textSize="@dimen/widget_sp_14"
                     android:textColor="@color/widget_color_2e2e2e"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/rate_et_belong"
                     style="@style/rate_et2e2e2e_h999999_style"
                     android:layout_marginRight="@dimen/widget_dp_15"
                     android:textSize="@dimen/widget_sp_14"
-                    android:hint="请输入归属者昵称"
+                    android:hint="点击选择组件归属人"
                     android:maxLines="1"
                     />
 
@@ -136,12 +105,12 @@
                     android:textSize="@dimen/widget_sp_14"
                     android:textColor="@color/widget_color_2e2e2e"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/rate_et_starttime"
                     style="@style/rate_et2e2e2e_h999999_style"
                     android:layout_marginRight="@dimen/widget_dp_15"
                     android:textSize="@dimen/widget_sp_14"
-                    android:hint="请输入项目开始时间 xxxx-xx-xx格式"
+                    android:hint="点击选择组件开始时间"
                     android:inputType="number"
                     android:digits="0123456789-"
                     android:maxLines="1"
@@ -169,47 +138,15 @@
                     android:textSize="@dimen/widget_sp_14"
                     android:textColor="@color/widget_color_2e2e2e"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/rate_et_endtime"
                     style="@style/rate_et2e2e2e_h999999_style"
                     android:layout_marginRight="@dimen/widget_dp_15"
                     android:textSize="@dimen/widget_sp_14"
-                    android:hint="请输入项目结束时间 xxxx-xx-xx格式"
+                    android:hint="点击选择组件结束时间"
                     android:maxLines="1"
                     android:inputType="number"
                     android:digits="0123456789-"
-                    />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/widget_dp_1"
-                android:background="@color/widget_color_f5f5f5"
-                android:layout_marginLeft="@dimen/widget_dp_15"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/widget_dp_60"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="当前进度："
-                    android:layout_marginLeft="@dimen/widget_dp_15"
-                    android:textSize="@dimen/widget_sp_14"
-                    android:textColor="@color/widget_color_2e2e2e"/>
-
-                <EditText
-                    android:id="@+id/rate_et_progress"
-                    style="@style/rate_et2e2e2e_h999999_style"
-                    android:layout_marginRight="@dimen/widget_dp_15"
-                    android:textSize="@dimen/widget_sp_14"
-                    android:hint="请输入项目进度(不大于100)"
-                    android:inputType="number"
-                    android:maxLines="1"
                     />
 
             </LinearLayout>
@@ -220,7 +157,6 @@
                 android:background="@color/widget_color_f5f5f5"/>
 
             <TextView
-                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/widget_dp_15"
@@ -229,26 +165,20 @@
                 android:text="备注"
                 android:textSize="@dimen/widget_sp_14"/>
 
-            <TextView
-                android:visibility="gone"
-                android:id="@+id/rate_tv_noted"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/widget_dp_10"
-                android:layout_marginLeft="@dimen/widget_dp_15"
-                android:layout_marginRight="@dimen/widget_dp_15"/>
-
             <EditText
-                android:visibility="gone"
                 android:id="@+id/rate_et_note"
                 style="@style/rate_et2e2e2e_h999999_style"
                 android:background="@drawable/rate_shape_solid_f5f5f5_r4"
                 android:layout_marginRight="@dimen/widget_dp_15"
                 android:layout_marginLeft="@dimen/widget_dp_15"
                 android:minHeight="@dimen/widget_dp_40"
+                android:layout_marginTop="@dimen/widget_dp_10"
                 android:hint="更新说明"
                 android:paddingLeft="@dimen/widget_dp_10"
                 android:paddingRight="@dimen/widget_dp_10"
+                android:paddingTop="@dimen/widget_dp_10"
+                android:paddingBottom="@dimen/widget_dp_10"
+                android:lineSpacingExtra="@dimen/widget_dp_6"
                 android:textSize="@dimen/widget_sp_14"/>
 
 

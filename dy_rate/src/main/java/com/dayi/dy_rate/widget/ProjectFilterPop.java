@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dayi.dy_rate.R;
+import com.dayi35.qx_base.beans.KeyValueEntity;
 import com.dayi35.qx_widget.pop.BasePop;
 import com.dayi35.qx_widget.pop.BasePopView;
 import com.dayi35.qx_widget.pop.OnEventListenner;
@@ -62,15 +63,19 @@ public class ProjectFilterPop {
             return this;
         }
 
+        public interface OnFilterItemClickedCallback{
+            void onClick(String key, String value, int pos);
+        }
+
         /**
          * 显示垂直列表弹窗
          * @param _vListData
          * @param _onVListClickListenner
          * @return
          */
-        public Builder init(List<String> _vListData,
+        public Builder init(List<KeyValueEntity> _vListData,
                                     int counts,
-                                    final OnEventListenner.OnVListClickListenner _onVListClickListenner) {
+                                    final OnFilterItemClickedCallback _onVListClickListenner) {
 
             // 获取弹窗视图
             View popView = builder.getView();
@@ -83,16 +88,16 @@ public class ProjectFilterPop {
                 vListRv.setLayoutManager(manager);
             }
             // 填充数据
-            final List<String> vListData = new ArrayList<>();
+            final List<KeyValueEntity> vListData = new ArrayList<>();
             vListData.addAll(_vListData);
-            final BaseRecyclerAdapter<String> mAdapter = new BaseRecyclerAdapter<String>(vListData, R.layout.rate_item_pop_filter) {
+            final BaseRecyclerAdapter<KeyValueEntity> mAdapter = new BaseRecyclerAdapter<KeyValueEntity>(vListData, R.layout.rate_item_pop_filter) {
                 @Override
-                protected void onBindViewHolder(SmartViewHolder holder, String model, int position) {
-                    holder.text(R.id.income_tv_userincome_popfilter_item, model);
+                protected void onBindViewHolder(SmartViewHolder holder, KeyValueEntity model, int position) {
+                    holder.text(R.id.income_tv_userincome_popfilter_item, model.getKey());
                 }
             };
             mAdapter.setOnItemClickListener((parent, view, position, id) -> {
-                _onVListClickListenner.onClick(vListData.get(position), position);
+                _onVListClickListenner.onClick(vListData.get(position).getKey(), vListData.get(position).getValue(), position);
                 builder.dissmiss();
             });
             vListRv.setAdapter(mAdapter);

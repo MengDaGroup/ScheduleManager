@@ -18,6 +18,11 @@ public class BasePresentImpl<V extends BaseView> implements BasePresent {
     }
 
     @Override
+    public void subscribe(Disposable subscription) {
+
+    }
+
+    @Override
     public void subscribe() {
 
     }

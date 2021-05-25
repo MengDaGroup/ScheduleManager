@@ -1,6 +1,5 @@
 package com.dayi.dy_rate.entity;
 
-import cn.bmob.v3.BmobUser;
 
 /**
  * =========================================
@@ -10,5 +9,6 @@ import cn.bmob.v3.BmobUser;
  * 修订历史:
  * =========================================
  */
-public class DyUser extends BmobUser {
+public class DyUser {
+
 }

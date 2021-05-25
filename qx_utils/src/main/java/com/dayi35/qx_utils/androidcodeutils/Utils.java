@@ -41,7 +41,7 @@ import java.util.concurrent.ExecutorService;
 
 /**
  * @Package: com.akee.utils
- * @ClassName: Utils
+ * @ClassName: CacheUtils
  * @Author: AkeeCai
  * @Description:
  * @CreateDate: 2020/3/14 15:23
@@ -198,7 +198,7 @@ public final class Utils {
     }
 
     static SPUtils getSpUtils4Utils() {
-        return SPUtils.getInstance("Utils");
+        return SPUtils.getInstance("CacheUtils");
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -290,7 +290,7 @@ public final class Utils {
             float sDurationScale = (Float) sDurationScaleField.get(null);
             if (sDurationScale == 0f) {
                 sDurationScaleField.set(null, 1f);
-                Log.i("Utils", "setAnimatorsEnabled: Animators are enabled now!");
+                Log.i("CacheUtils", "setAnimatorsEnabled: Animators are enabled now!");
             }
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
@@ -639,7 +639,7 @@ public final class Utils {
                     }
                 }
             } catch (Exception e) {
-                Log.e("Utils", e.getMessage());
+                Log.e("CacheUtils", e.getMessage());
             }
             return null;
         }

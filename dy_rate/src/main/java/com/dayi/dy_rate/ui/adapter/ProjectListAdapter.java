@@ -8,8 +8,7 @@ import android.widget.TextView;
 
 import com.dayi.dy_rate.R;
 import com.dayi.dy_rate.entity.ProjectEntity;
-import com.dayi.dy_rate.entity.ProjectTeamEntity;
-import com.dayi35.qx_utils.common.DateUtil;
+import com.dayi35.qx_utils.convert.FloatUtils;
 import com.dayi35.qx_widget.labelview.LabelTextView;
 import com.dayi35.qx_widget.progress.DonutProgress;
 import com.dayi35.recycle.adapter.RecyclerArrayAdapter;
@@ -23,18 +22,18 @@ import com.dayi35.recycle.holder.BaseViewHolder;
  * 修订历史:
  * =========================================
  */
-public class ProjectTeamAdapter extends RecyclerArrayAdapter<ProjectTeamEntity> {
+public class ProjectListAdapter extends RecyclerArrayAdapter<ProjectEntity> {
 
-    public ProjectTeamAdapter(Context context) {
+    public ProjectListAdapter(Context context) {
         super(context);
     }
 
     @Override
     public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ProjectHolder(parent, R.layout.rate_item_projectteam);
+        return new ProjectHolder(parent, R.layout.rate_item_project);
     }
 
-    private class ProjectHolder extends BaseViewHolder<ProjectTeamEntity>{
+    private class ProjectHolder extends BaseViewHolder<ProjectEntity>{
         TextView mTvProjectName;            //项目名称
         DonutProgress mDpProgress;          //进度
         TextView mTvUpdater;                //更新者
@@ -56,54 +55,47 @@ public class ProjectTeamAdapter extends RecyclerArrayAdapter<ProjectTeamEntity> 
         }
 
         @Override
-        public void setData(ProjectTeamEntity data) {
+        public void setData(ProjectEntity data) {
             super.setData(data);
-            mTvProjectName.setText(data.getProjectName());
-            mTvUpdater.setText("更新者: " + data.getUpdateUser());
-            mTvUpdateTime.setText("更新于: " + data.getUpdateTime());
-            mTvBelong.setText("归属于:" + data.getProjectBelong());
-            if (!TextUtils.isEmpty(data.getProjectRateName())) {
-                mTvProject.setVisibility(View.VISIBLE);
-                mTvProject.setText(data.getProjectRateName());
-            }else {
-                mTvProject.setVisibility(View.GONE);
-            }
+            mTvProjectName.setText(data.getName());
+            mTvUpdateTime.setText("更新于: " + data.getUpdatedAt());
+            mTvProject.setText("项目");
 
-            //计算时间差
-            long times = DateUtil.dateToLong(data.getProjectEndTime(), DateUtil.mFormat_date_24) - System.currentTimeMillis();
-            if (100 == Integer.valueOf(data.getProjectProgress())){
+            if (3 == data.getStatus()){
                 //标签
                 mLtvState.setLabelText("已结束");
                 mLtvState.setLabelBackgroundColor(getContext().getResources().getColor(R.color.widget_color_cd5b55));
                 //进度样式
                 mDpProgress.setFinishedStrokeColor(getContext().getResources().getColor(R.color.widget_color_cd5b55));
                 mDpProgress.setTextColor(getContext().getResources().getColor(R.color.widget_color_cd5b55));
-            }else if (times > 0){
+            }else if (2 == data.getStatus()){
                 //状态标签
                 mLtvState.setLabelText("进行中");
                 mLtvState.setLabelBackgroundColor(getContext().getResources().getColor(R.color.widget_color_a5dc86));
                 //进度样式
                 mDpProgress.setFinishedStrokeColor(getContext().getResources().getColor(R.color.widget_color_a5dc86));
                 mDpProgress.setTextColor(getContext().getResources().getColor(R.color.widget_color_a5dc86));
-            }else {
+            }else if (4 == data.getStatus()){
                 //标签
                 mLtvState.setLabelText("已逾期");
                 mLtvState.setLabelBackgroundColor(getContext().getResources().getColor(R.color.widget_color_f8bb86));
                 //进度样式
                 mDpProgress.setFinishedStrokeColor(getContext().getResources().getColor(R.color.widget_color_f8bb86));
                 mDpProgress.setTextColor(getContext().getResources().getColor(R.color.widget_color_f8bb86));
+            }else if (1 == data.getStatus()){
+                //标签
+                mLtvState.setLabelText("未开始");
+                mLtvState.setLabelBackgroundColor(getContext().getResources().getColor(R.color.widget_color_a5dc86));
+                //进度样式
+                mDpProgress.setFinishedStrokeColor(getContext().getResources().getColor(R.color.widget_color_a5dc86));
+                mDpProgress.setTextColor(getContext().getResources().getColor(R.color.widget_color_a5dc86));
             }
-            //设置端       1.Android     2.IOS
-            if (!TextUtils.isEmpty(data.getProjectOS()) && data.getProjectOS().equals("1")){
-                mTvOS.setText("Android端");
-                mTvOS.setTextColor(getContext().getResources().getColor(R.color.widget_color_a5dc86));
-            }else {
-                mTvOS.setText("IOS端");
-                mTvOS.setTextColor(getContext().getResources().getColor(R.color.widget_color_cd5b55));
-            }
+
+            mTvOS.setText(data.getOs());
+            mTvOS.setTextColor(getContext().getResources().getColor(R.color.widget_color_cd5b55));
             //设置进度
-            mDpProgress.setProgress(Integer.valueOf(data.getProjectProgress()));
-            mDpProgress.setDonut_progress(data.getProjectProgress());
+            mDpProgress.setProgress(FloatUtils.float2Point(data.getProgress()));
+//            mDpProgress.setDonut_progress(FloatUtils.str2point(data.getProgress()));
         }
     }
 

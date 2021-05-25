@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.dayi35.qx_widget.titlebar.TitleBar
+        android:id="@+id/rate_tb_module_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:widget_centertitle="组件名"
+        app:widget_righttext="添加功能" />
+
+    <RelativeLayout
+        android:id="@+id/rate_rl_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rate_tb_module_detail"
+        android:layout_marginTop="@dimen/widget_dp_20"
+        android:background="@drawable/widget_shape_solid_ffffff_r6"
+        android:layout_marginLeft="@dimen/widget_dp_15"
+        android:layout_marginRight="@dimen/widget_dp_15">
+
+        <com.dayi35.qx_widget.progress.DonutProgress
+            android:id="@+id/rate_dp_progress"
+            android:layout_width="@dimen/widget_dp_110"
+            android:layout_height="@dimen/widget_dp_110"
+            app:widget_donut_progress="60"
+            android:layout_marginTop="@dimen/widget_dp_13"
+            android:layout_marginLeft="@dimen/widget_dp_20"
+            app:widget_donut_max="100"
+            app:widget_donut_text_size="@dimen/widget_sp_16"
+            app:widget_donut_finished_stroke_width="@dimen/widget_dp_16"
+            app:widget_donut_unfinished_stroke_width="@dimen/widget_dp_15"
+            app:widget_donut_finished_color="@color/widget_color_a5dc86"
+            app:widget_donut_unfinished_color="@color/widget_color_33a5dc86"
+            app:widget_donut_text_color="@color/widget_color_a5dc86"
+            app:widget_donut_inner_bottom_text_size="@dimen/widget_sp_12"/>
+
+        <TextView
+            android:id="@+id/rate_tv_project_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/rate_dp_progress"
+            android:layout_alignLeft="@id/rate_dp_progress"
+            android:layout_below="@id/rate_dp_progress"
+            android:gravity="center_horizontal"
+            android:text="项目名称"
+            android:textSize="@dimen/widget_sp_14"
+            android:textColor="@color/widget_color_a5dc86"/>
+
+        <TextView
+            android:id="@+id/rate_tv_preview_os"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/widget_dp_4"
+            android:paddingRight="@dimen/widget_dp_4"
+            android:paddingBottom="@dimen/widget_dp_2"
+            android:paddingTop="@dimen/widget_dp_2"
+            android:text="Android"
+            android:textColor="@color/widget_color_ffffff"
+            android:textSize="@dimen/widget_sp_12"
+            android:layout_alignTop="@id/rate_dp_progress"
+            android:layout_toRightOf="@id/rate_dp_progress"
+            android:layout_marginLeft="@dimen/widget_dp_5"
+            android:layout_marginTop="@dimen/widget_dp_20"
+            android:background="@drawable/widget_sele_redbutton"/>
+
+        <TextView
+            android:id="@+id/rate_tv_belong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:paddingLeft="@dimen/widget_dp_6"
+            android:paddingRight="@dimen/widget_dp_6"
+            android:paddingBottom="@dimen/widget_dp_2"
+            android:paddingTop="@dimen/widget_dp_2"
+            android:text="蔡建"
+            android:textColor="@color/widget_color_ffffff"
+            android:textSize="@dimen/widget_sp_12"
+            android:layout_alignTop="@id/rate_dp_progress"
+            android:layout_toRightOf="@id/rate_tv_preview_os"
+            android:layout_marginLeft="@dimen/widget_dp_5"
+            android:layout_marginTop="@dimen/widget_dp_20"
+            android:background="@drawable/widget_sele_bluebutton"/>
+
+        <TextView
+            android:id="@+id/rate_tv_time_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/widget_dp_6"
+            android:paddingRight="@dimen/widget_dp_6"
+            android:paddingBottom="@dimen/widget_dp_2"
+            android:paddingTop="@dimen/widget_dp_2"
+            android:text="期限：2021-04-02至2021-04-14"
+            android:textColor="@color/widget_color_ffffff"
+            android:textSize="@dimen/widget_sp_12"
+            android:layout_below="@id/rate_tv_preview_os"
+            android:layout_toRightOf="@id/rate_dp_progress"
+            android:layout_marginLeft="@dimen/widget_dp_5"
+            android:layout_marginTop="@dimen/widget_dp_6"
+            android:background="@drawable/widget_sele_bluebutton"/>
+
+        <TextView
+            android:id="@+id/rate_tv_update_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/widget_dp_6"
+            android:paddingRight="@dimen/widget_dp_6"
+            android:paddingBottom="@dimen/widget_dp_2"
+            android:paddingTop="@dimen/widget_dp_2"
+            android:text="最后更新于: 2021-04-09"
+            android:textColor="@color/widget_color_ffffff"
+            android:textSize="@dimen/widget_sp_12"
+            android:layout_toRightOf="@id/rate_dp_progress"
+            android:layout_below="@id/rate_tv_time_length"
+            android:layout_marginLeft="@dimen/widget_dp_5"
+            android:layout_marginTop="@dimen/widget_dp_6"
+            android:background="@drawable/widget_sele_redbutton"/>
+
+        <TextView
+            android:id="@+id/rate_tv_remark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:layout_toRightOf="@id/rate_dp_progress"
+            android:layout_below="@id/rate_tv_update_time"
+            android:layout_marginTop="@dimen/widget_dp_4"
+            android:layout_marginLeft="@dimen/widget_dp_5"
+            android:background="@drawable/widget_sele_bluebutton"
+            android:textSize="@dimen/widget_sp_13"
+            android:textColor="@color/widget_color_ffffff"
+            android:paddingLeft="@dimen/widget_dp_6"
+            android:paddingRight="@dimen/widget_dp_6"
+            android:paddingBottom="@dimen/widget_dp_2"
+            android:paddingTop="@dimen/widget_dp_2"
+            android:layout_marginBottom="@dimen/widget_dp_16"
+            android:layout_marginRight="@dimen/widget_dp_15"
+            android:ellipsize="end" />
+
+        <com.dayi35.qx_widget.labelview.LabelTextView
+            android:id="@+id/rate_ltv_preview_state"
+            android:layout_width="@dimen/widget_dp_60"
+            android:layout_height="@dimen/widget_dp_60"
+            android:gravity="center"
+            android:padding="@dimen/widget_dp_16"
+            app:widget_label_backgroundColor="@color/widget_color_cd5b55"
+            app:widget_label_distance="@dimen/widget_dp_25"
+            app:widget_label_orientation="RIGHT_TOP"
+            app:widget_label_text="状态"
+            app:widget_label_textSize="@dimen/widget_sp_12"
+            app:widget_label_height="@dimen/widget_dp_34"
+            android:layout_alignParentRight="true"
+            />
+
+
+    </RelativeLayout>
+
+    <com.dayi35.recycle.view.DYRefreshView
+        android:id="@+id/rate_rv_project"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/widget_color_f5f5f5"
+        android:layout_below="@id/rate_rl_card"
+        app:layout_empty="@layout/rate_layout_emptyproject"
+        android:paddingBottom="@dimen/widget_dp_10"/>
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/rate_btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/widget_dp_30"
+        android:layout_marginBottom="@dimen/widget_dp_50"
+        android:textColor="@color/widget_color_ffffff"
+        android:background="@drawable/widget_sele_redbutton"/>
+
+</RelativeLayout>

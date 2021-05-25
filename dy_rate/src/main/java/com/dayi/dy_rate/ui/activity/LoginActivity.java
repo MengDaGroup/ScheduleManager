@@ -3,23 +3,23 @@ package com.dayi.dy_rate.ui.activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.dayi.dy_rate.R;
 import com.dayi.dy_rate.R2;
 import com.dayi.dy_rate.contract.UserContract;
-import com.dayi.dy_rate.entity.DyUser;
+import com.dayi.dy_rate.entity.TeamUserEntity;
 import com.dayi.dy_rate.entity.UserEntity;
 import com.dayi.dy_rate.presenter.LoginPresenter;
 import com.dayi.dy_rate.utils.UserRateHelper;
-import com.dayi35.qx_base.arouter.ARouterHelper;
-import com.dayi35.qx_base.arouter.ARouterPath;
 import com.dayi35.qx_base.base.state.BaseStateActivity;
-import com.dayi35.qx_base.utils.UserHelper;
 import com.dayi35.qx_utils.common.StatusBarUtil;
 import com.dayi35.qx_utils.common.ToastUtils;
+import com.dayi35.qx_utils.common.TypefaceUtil;
 import com.dayi35.qx_utils.convert.RCaster;
 import com.dayi35.qx_widget.titlebar.TitleBar;
 import com.dayi35.qx_widget.widget.CusEditText;
+
 
 import butterknife.BindView;
 
@@ -36,6 +36,8 @@ public class LoginActivity extends BaseStateActivity<LoginPresenter> implements 
     CusEditText mCetUserName;               //用户名
     @BindView(R2.id.user_et_password)
     CusEditText mCetPassword;               //密码
+    @BindView(R2.id.user_tv_sign)
+    TextView mTvSign;                       //标签
     @BindView(R2.id.rate_user_login)
     Button mBtnLogin;                       //登录按钮
 
@@ -66,25 +68,23 @@ public class LoginActivity extends BaseStateActivity<LoginPresenter> implements 
     protected void initView() {
         StatusBarUtil.transparent(this);
         StatusBarUtil.setDarkMode(this);
+        mTvSign.setTypeface(TypefaceUtil.getTypeface(TypefaceUtil.TYPE_NUMBERBLOAD));
     }
 
     @Override
     protected void initData() {
-
+        //如果已登录过，直接跳转到列表界面
         if (!TextUtils.isEmpty(UserRateHelper.get().getPassWord()) &&
                 !TextUtils.isEmpty(UserRateHelper.get().getUserName()) &&
                 null != UserRateHelper.get().getUserName()){
-            Intent intent = new Intent(this, ProjectTeamListActivity.class);
-            startActivity(intent);
-            this.finish();
+            if (verifyInput()) {
+                getP().login(mUserName, mPassword);
+            }
         }
-
+        //登录按钮的点击事件
         mBtnLogin.setOnClickListener(v -> {
             if (verifyInput()) {
-                DyUser entity = new DyUser();
-                entity.setUsername(mUserName);
-                entity.setPassword(mPassword);
-                getP().login(entity, mPassword);
+                getP().login(mUserName, mPassword);
             }
         });
     }
@@ -94,10 +94,21 @@ public class LoginActivity extends BaseStateActivity<LoginPresenter> implements 
         return null;
     }
 
+    /**
+     * 获取用户信息成功(暂无用)
+     * @param entity
+     */
     @Override
     public void onGetUserInfo(UserEntity entity) {
-//        ARouterHelper.navigation(ARouterPath.Project.ProjectList.path);
-        Intent intent = new Intent(LoginActivity.this, ProjectTeamListActivity.class);
+
+    }
+
+    /**
+     * 登录成功
+     */
+    @Override
+    public void onLoginSuccess() {
+        Intent intent = new Intent(LoginActivity.this, ProjectListActivity.class);
         startActivity(intent);
     }
 
