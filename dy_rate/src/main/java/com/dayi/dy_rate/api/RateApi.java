@@ -70,7 +70,9 @@ public interface RateApi {
     Observable<RateBaseEntity<RateBaserPagerEntity<ProjectEntity>>> projectGetList(@Query("id") String name,
                                                                    @Query("status") int status,
                                                                    @Query("teamId") String teamId,
-                                                                   @Query("os") int os);
+                                                                   @Query("os") int os,
+                                                                   @Query("page") int page,
+                                                                   @Query("pageSize") int pageSize);
 
     /**
      * 获取项目筛选条件数据
@@ -234,6 +236,15 @@ public interface RateApi {
                                                        @Query("endTime") String endTime,
                                                        @Query("moduleId") String moduleId,
                                                        @Query("remark") String remark);
+
+    /**
+     * 删除功能块
+     * @param id  功能ID
+     * @return
+     */
+    @POST(RateApiService.V1.COMPONENT_DELETE)
+    @Headers(Constant.ValueConstants.COMMONHEADER)
+    Observable<RateBaseEntity<String>> componentDelete(@Path("id") String id);
 
     /**
      * @param id        功能ID    --->    更新功能进度

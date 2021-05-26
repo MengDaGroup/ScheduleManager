@@ -112,6 +112,12 @@ public interface UserContract {
              */
             void moudleGetList(String name, String projectId, int os, int pageNo);
 
+            /**
+             * 删除组件
+             * @param id    组件ID    --->    删除组件
+             */
+            void moduleDelete(String id);
+
         }
 
         interface View extends BaseView{
@@ -126,6 +132,12 @@ public interface UserContract {
              * @param entity
              */
             void onGetMoudleList(RateBaserPagerEntity<ModuleEntity> entity);
+
+            /**
+             * 删除组件成功
+             * @param msg   ---> 删除组件成功
+             */
+            void onDeletedModule(String msg);
         }
 
     }
@@ -149,6 +161,12 @@ public interface UserContract {
              * @param page          页码
              */
             void componentGetList(String name, String projectId, String moduleId, int page);
+
+            /**
+             * 删除功能
+             * @param id
+             */
+            void componentDelete(String id);
         }
 
         interface View extends BaseView{
@@ -163,6 +181,12 @@ public interface UserContract {
              * @param entity 功能列表       ---> 获取到功能（成分）列表
              */
             void onGetComponetList(RateBaserPagerEntity<ComponentEntity> entity);
+
+            /**
+             * 成功删除功能
+             * @param msg
+             */
+            void onComponentDelete(String msg);
         }
     }
 
@@ -208,9 +232,10 @@ public interface UserContract {
              * @param status    状态：1.未开始 2.进行中 3.已结束 4.逾期
              * @param teamId    团队id
              * @param os        客户端类型: 1 - 安卓 2 - IOS
+             * @param pageNo    页码
              * @return
              */
-            void projectGetList(String name, String status, String teamId, String os);
+            void projectGetList(String name, String status, String teamId, String os, int pageNo);
 
             /**
              * 获取项目过滤条件

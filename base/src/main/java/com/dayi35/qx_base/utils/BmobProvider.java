@@ -1,6 +1,5 @@
 package com.dayi35.qx_base.utils;
 
-import cn.bmob.v3.util.BmobContentProvider;
 
 /**
  * =========================================
@@ -10,5 +9,5 @@ import cn.bmob.v3.util.BmobContentProvider;
  * 修订历史:
  * =========================================
  */
-public class BmobProvider extends BmobContentProvider {
+public class BmobProvider{
 }

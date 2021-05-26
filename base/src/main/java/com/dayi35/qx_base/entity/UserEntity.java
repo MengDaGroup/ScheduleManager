@@ -1,6 +1,5 @@
 package com.dayi35.qx_base.entity;
 
-import cn.bmob.v3.BmobUser;
 
 /**
  * =========================================
@@ -10,6 +9,6 @@ import cn.bmob.v3.BmobUser;
  * 修订历史:
  * =========================================
  */
-public class UserEntity extends BmobUser {
+public class UserEntity {
 
 }

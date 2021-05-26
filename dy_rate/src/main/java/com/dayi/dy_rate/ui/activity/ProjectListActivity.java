@@ -9,6 +9,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.dayi.dy_rate.R;
 import com.dayi.dy_rate.R2;
@@ -33,6 +34,7 @@ import com.dayi35.qx_utils.common.StatusBarUtil;
 import com.dayi35.qx_utils.common.ToastUtils;
 import com.dayi35.qx_utils.convert.RCaster;
 import com.dayi35.qx_widget.titlebar.TitleBar;
+import com.dayi35.recycle.inter.OnLoadMoreListener;
 import com.dayi35.recycle.view.DYRefreshView;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -131,6 +133,10 @@ public class ProjectListActivity extends BaseStateActivity<ProjectListPresenter>
         initListener();
         //团队筛选条件
         getP().memberList();
+        //刷新
+        mRvProject.setRefreshListener(() -> refresh());
+        //加载
+        mAdapter.setMore(R.layout.rv_footer, () -> load());
     }
 
     @Override
@@ -324,8 +330,8 @@ public class ProjectListActivity extends BaseStateActivity<ProjectListPresenter>
      */
     @Override
     public void onGetProjectList(RateBaserPagerEntity<ProjectEntity> entity) {
-        mAdapter.clear();
         if (pageNo == 1){//刷新
+            mAdapter.clear();
             mRvProject.setRefreshing(false);
         }
         if (pageNo == entity.getPager().getTotalPage()){
@@ -381,7 +387,12 @@ public class ProjectListActivity extends BaseStateActivity<ProjectListPresenter>
      * 刷新
      */
     private void refresh(){
-        getP().projectGetList(mName, mState, mTeam, mOs);
+        pageNo = 1;
+        load();
+    }
+
+    private void load(){
+        getP().projectGetList(mName, mState, mTeam, mOs, pageNo);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

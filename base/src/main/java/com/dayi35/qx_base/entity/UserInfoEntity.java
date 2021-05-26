@@ -1,6 +1,5 @@
 package com.dayi35.qx_base.entity;
 
-import cn.bmob.v3.BmobObject;
 
 /**
  * =========================================
@@ -10,7 +9,7 @@ import cn.bmob.v3.BmobObject;
  * 修订历史:
  * =========================================
  */
-public class UserInfoEntity extends BmobObject {
+public class UserInfoEntity{
     private String user_id;             //用户ID      用户唯一标识即bmobuser中的objId
     private String nickName;            //用户昵称
     private String userType;            //用户类型    1.车主，2管理员，3超级管理员

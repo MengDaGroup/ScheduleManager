@@ -11,8 +11,10 @@ package com.dayi35.qx_base.constant;
 public class Constant {
 
     public interface Host{
-        //本地
-        String HOST         =           "http://172.29.5.216:8081";
+        //本地(浩源)
+//        String HOST         =           "http://172.29.5.216:8081";
+        //测试环境
+        String HOST         =           "http://172.28.1.3:10080";
     }
 
     /**
@@ -28,6 +30,7 @@ public class Constant {
     public interface ValueConstants{
         //是否debug模式
         boolean isDebug = true;
+        //列表一次加载条数
         int PAGESIZE = 10;
         //header
         String COMMONHEADER = "Content-Type: application/x-www-form-urlencoded;charset=UTF-8";

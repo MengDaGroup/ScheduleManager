@@ -39,9 +39,9 @@ public class ProjectListPresenter extends BasePresentHttpImp<UserContract.Projec
      * @param os        客户端类型: 1 - 安卓 2 - IOS
      */
     @Override
-    public void projectGetList(String name, String status, String teamId, String os) {
+    public void projectGetList(String name, String status, String teamId, String os, int pageNo) {
         mView.showLoading();
-        conver(model.projectGetList(name, status, teamId, os), new RequestCallback<RateBaseEntity<RateBaserPagerEntity<ProjectEntity>>>() {
+        conver(model.projectGetList(name, status, teamId, os, pageNo), new RequestCallback<RateBaseEntity<RateBaserPagerEntity<ProjectEntity>>>() {
             @Override
             public void onSuccess(RateBaseEntity<RateBaserPagerEntity<ProjectEntity>> entity) {
                 mView.hideLoading();

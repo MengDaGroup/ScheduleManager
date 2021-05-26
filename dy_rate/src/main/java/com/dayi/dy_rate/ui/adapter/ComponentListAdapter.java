@@ -2,6 +2,8 @@ package com.dayi.dy_rate.ui.adapter;
 
 import android.content.Context;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dayi.dy_rate.R;
@@ -12,6 +14,7 @@ import com.dayi35.qx_widget.labelview.LabelTextView;
 import com.dayi35.qx_widget.progress.DonutProgress;
 import com.dayi35.recycle.adapter.RecyclerArrayAdapter;
 import com.dayi35.recycle.holder.BaseViewHolder;
+import com.dayi35.recycle.swipe.OnSwipeMenuListener;
 
 /**
  * =========================================
@@ -31,6 +34,11 @@ public class ComponentListAdapter extends RecyclerArrayAdapter<ComponentEntity> 
         return new ComponentHolder(parent, R.layout.rate_item_component);
     }
 
+    private OnSwipeMenuListener listener;
+    public void setOnSwipeMenuListener(OnSwipeMenuListener listener) {
+        this.listener = listener;
+    }
+
     private class ComponentHolder extends BaseViewHolder<ComponentEntity>{
         TextView mTvProjectName;            //项目名称
         DonutProgress mDpProgress;          //进度
@@ -40,6 +48,8 @@ public class ComponentListAdapter extends RecyclerArrayAdapter<ComponentEntity> 
         LabelTextView mLtvState;            //状态
         TextView mTvOS;                     //端
         TextView mTvComponent;              //功能
+        Button mBtnDelete;                  //删除
+        RelativeLayout mRlContent;          //内容
         public ComponentHolder(ViewGroup parent, int res) {
             super(parent, res);
             mTvProjectName = getView(R.id.rate_tv_project_name);
@@ -50,6 +60,8 @@ public class ComponentListAdapter extends RecyclerArrayAdapter<ComponentEntity> 
             mTvBelong = getView(R.id.rate_tv_belong);
             mTvOS = getView(R.id.rate_tv_os);
             mTvComponent = getView(R.id.rate_tv_component);
+            mBtnDelete = getView(R.id.rate_btn_delete);
+            mRlContent = getView(R.id.rate_rl_item_content);
         }
 
         @Override
@@ -87,6 +99,17 @@ public class ComponentListAdapter extends RecyclerArrayAdapter<ComponentEntity> 
             //设置进度
             mDpProgress.setProgress(FloatUtils.float2Point(data.getProgress()));
 //            mDpProgress.setDonut_progress(FloatUtils.str2point(data.getProgress()));
+            mBtnDelete.setOnClickListener(v -> {
+                if (null != listener){
+                    listener.toDelete(getAdapterPosition());
+                }
+            });
+
+            mRlContent.setOnClickListener(v -> {
+                if (null != listener){
+                    listener.toTop(getAdapterPosition());
+                }
+            });
         }
     }
 }

@@ -11,9 +11,6 @@ import com.dayi35.qx_utils.common.ToastUtils;
 
 import java.util.List;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 
 /**
  * =========================================
@@ -61,21 +58,7 @@ public class LoginPresenter extends BasePresentHttpImp<UserContract.LoginView> i
      */
     @Override
     public void getUserInfo(String userId) {
-        mView.showLoading();
-        BmobQuery<UserEntity> query = new BmobQuery<>();
-        query.addWhereEqualTo("userId", userId);
-        query.findObjects(new FindListener<UserEntity>() {
-            @Override
-            public void done(List<UserEntity> list, BmobException e) {
-                mView.hideLoading();
-                if (null == e && list.size() > 0){
-                    UserRateHelper.get().saveUser(list.get(0));
-                    mView.onGetUserInfo(list.get(0));
-                }else {
-                    ToastUtils.showShort("登陆失败");
-                }
-            }
-        });
+
     }
 
 

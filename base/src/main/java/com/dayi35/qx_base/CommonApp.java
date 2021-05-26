@@ -1,20 +1,16 @@
 package com.dayi35.qx_base;
 
 import android.app.Application;
-import android.content.Context;
-import android.util.Config;
 
 import androidx.annotation.NonNull;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.dayi35.qx_base.arouter.ARouterHelper;
 import com.dayi35.qx_base.constant.Constant;
-import com.dayi35.qx_base.http.RetrofitManager;
 import com.dayi35.qx_utils.androidcodeutils.Utils;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.view.CropImageView;
 
-import cn.bmob.v3.Bmob;
 import timber.log.Timber;
 
 /**
@@ -43,7 +39,6 @@ public class CommonApp extends Application {
         initARouter();
         initTimber();
         initImagePicker();
-        Bmob.initialize(this, Constant.KeyConstants.bombAppKey);
     }
 
     /**

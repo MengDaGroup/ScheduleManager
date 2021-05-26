@@ -24,9 +24,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/widget_sp_16"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:textColor="@color/widget_color_2e2e2e"
         android:layout_toRightOf="@id/rate_dp_progress"
         android:layout_marginLeft="@dimen/widget_dp_10"
+        android:layout_marginRight="@dimen/widget_dp_66"
         android:layout_marginTop="@dimen/widget_dp_13"/>
 
     <TextView

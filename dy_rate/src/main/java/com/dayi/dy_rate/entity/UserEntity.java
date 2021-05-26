@@ -1,6 +1,5 @@
 package com.dayi.dy_rate.entity;
 
-import cn.bmob.v3.BmobObject;
 
 /**
  * =========================================
@@ -10,7 +9,7 @@ import cn.bmob.v3.BmobObject;
  * 修订历史:
  * =========================================
  */
-public class UserEntity extends BmobObject {
+public class UserEntity {
     private String userId;              //用户ID
     private String userNickName;        //用户昵称
 

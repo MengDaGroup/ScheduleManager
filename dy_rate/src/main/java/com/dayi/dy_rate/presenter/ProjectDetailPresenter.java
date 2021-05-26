@@ -70,4 +70,26 @@ public class ProjectDetailPresenter extends BasePresentHttpImp<UserContract.Proj
             }
         });
     }
+
+    /**
+     *
+     * @param id    组件ID    --->    删除组件
+     */
+    @Override
+    public void moduleDelete(String id) {
+        mView.showLoading();
+        conver(model.moduleDelete(id), new RequestCallback<RateBaseEntity<String>>() {
+            @Override
+            public void onSuccess(RateBaseEntity<String> entity) {
+                mView.hideLoading();
+                mView.onDeletedModule(entity.getMessage());
+            }
+
+            @Override
+            public void onError(String err) {
+                mView.hideLoading();
+                ToastUtils.showShort(err);
+            }
+        });
+    }
 }

@@ -90,8 +90,8 @@ public class RateModel {
      * @param os        客户端类型: 1 - 安卓 2 - IOS
      * @return
      */
-    public Observable<RateBaseEntity<RateBaserPagerEntity<ProjectEntity>>> projectGetList(String name, String status, String teamId, String os){
-        return mApi.projectGetList(name, Integer.valueOf(status), teamId, Integer.valueOf(os));
+    public Observable<RateBaseEntity<RateBaserPagerEntity<ProjectEntity>>> projectGetList(String name, String status, String teamId, String os, int pageNo){
+        return mApi.projectGetList(name, Integer.valueOf(status), teamId, Integer.valueOf(os), pageNo, Constant.ValueConstants.PAGESIZE);
     }
 
     /**
@@ -155,6 +155,15 @@ public class RateModel {
     }
 
     /**
+     * 删除组件（模块）
+     * @param id  组件（模块）ID
+     * @return
+     */
+    public Observable<RateBaseEntity<String>> moduleDelete(String id){
+        return mApi.moduleDelete(id);
+    }
+
+    /**
      * 获取功能列表
      * @param name          模块名
      * @param projectId     项目ID
@@ -189,6 +198,15 @@ public class RateModel {
         }else {
             return mApi.componentUpdate(id, name, projectId, startTime, endTime, moduleId, remark);
         }
+    }
+
+    /**
+     * 删除功能块
+     * @param id  功能ID
+     * @return
+     */
+    public Observable<RateBaseEntity<String>> componentDelete(String id){
+        return mApi.componentDelete(id);
     }
 
     /**

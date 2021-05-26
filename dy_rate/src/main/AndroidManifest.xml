@@ -17,11 +17,6 @@
         android:theme="@style/rate_them"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <provider
-            android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.dayi.dy_rate.BmobContentProvider">
-        </provider>
-
         <activity android:name=".ui.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

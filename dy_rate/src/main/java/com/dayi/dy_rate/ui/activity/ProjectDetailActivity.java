@@ -35,6 +35,7 @@ import com.dayi35.qx_widget.labelview.LabelTextView;
 import com.dayi35.qx_widget.progress.DonutProgress;
 import com.dayi35.qx_widget.titlebar.TitleBar;
 import com.dayi35.recycle.inter.OnLoadMoreListener;
+import com.dayi35.recycle.swipe.OnSwipeMenuListener;
 import com.dayi35.recycle.view.DYRefreshView;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -108,12 +109,20 @@ public class ProjectDetailActivity extends BaseStateActivity<ProjectDetailPresen
 
         mAdapter = new ModuleListAdapter(this);
         mRvProject.setAdapter(mAdapter);
+        //侧滑点击事件
+        mAdapter.setOnSwipeMenuListener(new OnSwipeMenuListener() {
+            @Override
+            public void toDelete(int position) {
+                getP().moduleDelete(mAdapter.getAllData().get(position).getId());
+            }
 
-        mAdapter.setOnItemClickListener(position -> {
-            Bundle bundle = new Bundle();
-            bundle.putString(ARouterPath.Rate.ModuleDetail.Params.MODULEID, mAdapter.getAllData().get(position).getId());
-            bundle.putString(ARouterPath.Rate.ModuleDetail.Params.PROJECTID, mAdapter.getAllData().get(position).getProjectId());
-            ARouterHelper.navigation(ARouterPath.Rate.ModuleDetail.PATH, bundle);
+            @Override
+            public void toTop(int position) {
+                Bundle bundle = new Bundle();
+                bundle.putString(ARouterPath.Rate.ModuleDetail.Params.MODULEID, mAdapter.getAllData().get(position).getId());
+                bundle.putString(ARouterPath.Rate.ModuleDetail.Params.PROJECTID, mAdapter.getAllData().get(position).getProjectId());
+                ARouterHelper.navigation(ARouterPath.Rate.ModuleDetail.PATH, bundle);
+            }
         });
         //刷新
         mRvProject.setRefreshListener(() -> refresh());
@@ -234,6 +243,15 @@ public class ProjectDetailActivity extends BaseStateActivity<ProjectDetailPresen
         }
         pageNo = pageNo + 1;
         mAdapter.addAll(entity.getList());
+    }
+
+    /**
+     *
+     * @param msg   ---> 删除组件成功
+     */
+    @Override
+    public void onDeletedModule(String msg) {
+        refresh();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

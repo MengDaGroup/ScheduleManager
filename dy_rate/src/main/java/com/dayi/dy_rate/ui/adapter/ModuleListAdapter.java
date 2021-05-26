@@ -1,7 +1,10 @@
 package com.dayi.dy_rate.ui.adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dayi.dy_rate.R;
@@ -12,6 +15,7 @@ import com.dayi35.qx_widget.labelview.LabelTextView;
 import com.dayi35.qx_widget.progress.DonutProgress;
 import com.dayi35.recycle.adapter.RecyclerArrayAdapter;
 import com.dayi35.recycle.holder.BaseViewHolder;
+import com.dayi35.recycle.swipe.OnSwipeMenuListener;
 
 /**
  * =========================================
@@ -31,6 +35,11 @@ public class ModuleListAdapter extends RecyclerArrayAdapter<ModuleEntity> {
         return new ProjectHolder(parent, R.layout.rate_item_module);
     }
 
+    private OnSwipeMenuListener listener;
+    public void setOnSwipeMenuListener(OnSwipeMenuListener listener) {
+        this.listener = listener;
+    }
+
     private class ProjectHolder extends BaseViewHolder<ModuleEntity>{
         TextView mTvProjectName;            //项目名称
         DonutProgress mDpProgress;          //进度
@@ -40,6 +49,8 @@ public class ModuleListAdapter extends RecyclerArrayAdapter<ModuleEntity> {
         LabelTextView mLtvState;            //状态
         TextView mTvOS;                     //端
         TextView mTvModule;                 //组件标识
+        Button mBtnDelete;                  //删除
+        RelativeLayout mRlContent;          //内容
         public ProjectHolder(ViewGroup parent, int res) {
             super(parent, res);
             mTvProjectName = getView(R.id.rate_tv_project_name);
@@ -50,6 +61,8 @@ public class ModuleListAdapter extends RecyclerArrayAdapter<ModuleEntity> {
             mTvBelong = getView(R.id.rate_tv_belong);
             mTvOS = getView(R.id.rate_tv_os);
             mTvModule = getView(R.id.rate_tv_module);
+            mBtnDelete = getView(R.id.rate_btn_delete);
+            mRlContent = getView(R.id.rate_rl_item_content);
         }
 
         @Override
@@ -95,6 +108,18 @@ public class ModuleListAdapter extends RecyclerArrayAdapter<ModuleEntity> {
             //设置进度
             mDpProgress.setProgress(FloatUtils.float2Point(data.getProgress()));
 //            mDpProgress.setDonut_progress(FloatUtils.str2point(data.getProgress()));
+
+            mBtnDelete.setOnClickListener(v -> {
+                if (null != listener){
+                    listener.toDelete(getAdapterPosition());
+                }
+            });
+
+            mRlContent.setOnClickListener(v -> {
+                if (null != listener){
+                    listener.toTop(getAdapterPosition());
+                }
+            });
         }
     }
 

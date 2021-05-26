@@ -6,6 +6,8 @@
     android:textColor="@drawable/rate_sele_textcolor_2e2e2e_ff9912"
     android:gravity="center"
     android:textSize="@dimen/widget_sp_14"
+    android:ellipsize="end"
+    android:maxLines="1"
     android:background="@drawable/rate_sele_filterpop_userincome_item"
     android:layout_marginRight="@dimen/widget_dp_12"
     android:layout_marginTop="@dimen/widget_dp_10">

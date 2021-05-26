@@ -35,6 +35,7 @@ import com.dayi35.qx_widget.progress.DonutProgress;
 import com.dayi35.qx_widget.titlebar.TitleBar;
 import com.dayi35.recycle.inter.OnItemClickListener;
 import com.dayi35.recycle.inter.OnLoadMoreListener;
+import com.dayi35.recycle.swipe.OnSwipeMenuListener;
 import com.dayi35.recycle.view.DYRefreshView;
 
 
@@ -106,7 +107,17 @@ public class ModuleDetailActivity extends BaseStateActivity<ModuleDetailPresente
     protected void initData() {
         mComponentAdapter = new ComponentListAdapter(this);
         mRvcomponent.setAdapter(mComponentAdapter);
-        mComponentAdapter.setOnItemClickListener(position -> goComponentDetail(mComponentAdapter.getAllData().get(position).getId()));
+        mComponentAdapter.setOnSwipeMenuListener(new OnSwipeMenuListener() {
+            @Override
+            public void toDelete(int position) {
+                getP().componentDelete(mComponentAdapter.getAllData().get(position).getId());
+            }
+
+            @Override
+            public void toTop(int position) {
+                goComponentDetail(mComponentAdapter.getAllData().get(position).getId());
+            }
+        });
         //刷新
         mRvcomponent.setRefreshListener(() -> refresh());
         //加载
@@ -208,6 +219,11 @@ public class ModuleDetailActivity extends BaseStateActivity<ModuleDetailPresente
         }
         pageNo = pageNo + 1;
         mComponentAdapter.addAll(entity.getList());
+    }
+
+    @Override
+    public void onComponentDelete(String msg) {
+        refresh();
     }
 
     /**

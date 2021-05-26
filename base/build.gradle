@@ -33,7 +33,6 @@ dependencies {
     api project(path: ':qx_freshview')
     api project(path: ':imagepicker')
     api library.glide
-    api library.bomb
     //utils
     api project(path: ':qx_utils')
     //widget
